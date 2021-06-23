@@ -1,0 +1,35 @@
+# Copyright (c) 2021 Synopsys
+# SPDX-License-Identifier: Apache-2.0
+
+config ZEPHYR_EMBARC_MLI_MODULE
+	bool
+
+config EMBARC_MLI
+	bool "embarc_mli Support"
+	help
+	  This option enables the embarc_mli library.
+
+config EMBARC_MLI_DSP_XY
+	bool "for targets with XY mem and DSP"
+	help
+	  Set if embarc mli library is for targets with XY mem and DSP,
+	  e.g., EM9D, EM11D.
+
+config EMBARC_MLI_DSP_WIDE
+	bool "for targets with wide DSP"
+	help
+	  Set if embarc mli library is for targets with wide DSP,
+	  e.g., HS45D, HS47D.
+
+config EMBARC_MLI_DSP
+	bool "for targets with DSP only"
+	help
+	  Set if embarc mli library is for targets with DSP only,
+	  e.g., EM5D, EM7D
+
+config EMBARC_MLI_HW_TCF_FILE
+	string "Target tcf file to build embarc mli library"
+	default "../../hw/em9d.tcf"
+	help
+	   The target tcf file to build embarc mli library. For details
+	   please refere embarc mli's documentation

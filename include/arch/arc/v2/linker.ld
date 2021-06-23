@@ -100,6 +100,16 @@ SECTIONS {
 #include <linker/kobject-text.ld>
 	} GROUP_LINK_IN(ROMABLE_REGION)
 
+#ifdef CONFIG_EMBARC_MLI_DSP_XY
+#include "embarc_mli.ld"
+#endif
+#ifdef CONFIG_EMBARC_MLI_DSP_WIDE
+#include "embarc_mli.ld"
+#endif
+#ifdef CONFIG_EMBARC_MLI_DSP
+#include "embarc_mli.ld"
+#endif
+
 	_image_text_end = .;
 	_image_rodata_start = .;
 
