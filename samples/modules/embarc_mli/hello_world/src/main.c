@@ -6,11 +6,11 @@
 #include "mli_api.h"
 #include <assert.h>
 #include <zephyr.h>
-#include <sys/printk.h>
+#include <stdio.h>
 
 int main(void)
 {
-	printk("************************************\n");
+	printf("************************************\n");
     int8_t data_in[8] = { 1, 2, 3, 4, 5, 6, 7, 8 };
     mli_tensor in = { 0 };
     in.el_type = MLI_EL_FX_8;
@@ -31,18 +31,18 @@ int main(void)
     status = mli_krn_eltwise_add_fx8(&in, &in, &out);
     assert(status == MLI_STATUS_OK);
     for (int i = 0; i < sizeof(data_out)/sizeof(data_out[0]); i++) {
-        printk("%d ", ((int8_t*)(out.data))[i]);
+        printf("%d ", ((int8_t*)(out.data))[i]);
     }
-    printk("\n");
+    printf("\n");
 
     status = mli_krn_eltwise_sub_fx8(&in, &in, &out);
     assert(status == MLI_STATUS_OK);
     for (int i = 0; i < sizeof(data_out)/sizeof(data_out[0]); i++) {
-        printk("%d ", ((int8_t*)(out.data))[i]);
+        printf("%d ", ((int8_t*)(out.data))[i]);
     }
-    printk("\n");
-    printk("************************************\n");
+    printf("\n");
+    printf("************************************\n");
 
-    printk("Hello World! %s\n", CONFIG_BOARD);
+    printf("Hello World! %s\n", CONFIG_BOARD);
     return 0;
 }

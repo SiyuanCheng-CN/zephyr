@@ -8,7 +8,6 @@
 #include <string.h>
 #include <stdio.h>
 #include <zephyr.h>
-#include <sys/printk.h>
 #include "mli_api.h"
 
 #include "cifar10_ref_inout.h"
@@ -157,7 +156,7 @@ int main(void)
 	float * pred_data = malloc(output_elements * sizeof(float));
 
 	if (pred_data == NULL) {
-		printk("ERROR: Can't allocate memory for output\n");
+		printf("ERROR: Can't allocate memory for output\n");
 		return -1;
 	}
 
@@ -171,9 +170,9 @@ int main(void)
 		err.noise_vec_length=0;
 		err.ref_to_noise_snr=0;
 		measure_err_vfloat(kSingleOutRef, pred_data, output_elements, &err);
-		printk("Result Quality: S/N=%d (%d db)\n", (int)(err.ref_vec_length / err.noise_vec_length),(int)err.ref_to_noise_snr);
+		printf("Result Quality: S/N=%f (%f db)\n", err.ref_vec_length / err.noise_vec_length,err.ref_to_noise_snr);
 	} else {
-		printk("ERROR: Can't transform out tensor to float\n");
+		printf("ERROR: Can't transform out tensor to float\n");
 	}
 	free(pred_data);
 	return 0;
