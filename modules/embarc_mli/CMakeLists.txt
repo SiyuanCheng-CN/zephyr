@@ -14,13 +14,15 @@ if(CONFIG_EMBARC_MLI)
     BUILD_COMMAND
     gmake -C ${EMBARC_MLI_DIR}
     TCF_FILE=${EMBARC_MLI_DIR}/hw/em9d.tcf
+    BUILD_DIR=${ZEPHYR_BINARY_DIR}/embarc_mli
+    LIBRARY_DIR=${ZEPHYR_BINARY_DIR}/embarc_mli/bin
     lib
     INSTALL_COMMAND ""    
-    BUILD_BYPRODUCTS ${EMBARC_MLI_DIR}/bin/libmli.a
+    BUILD_BYPRODUCTS ${ZEPHYR_BINARY_DIR}/embarc_mli/bin/libmli.a
     )
   # Create a wrapper CMake library that our app can link with
   add_library(embarc_mli_lib STATIC IMPORTED GLOBAL)
-  set_target_properties(embarc_mli_lib PROPERTIES IMPORTED_LOCATION ${EMBARC_MLI_DIR}/bin/libmli.a)
+  set_target_properties(embarc_mli_lib PROPERTIES IMPORTED_LOCATION ${ZEPHYR_BINARY_DIR}/embarc_mli/bin/libmli.a)
   target_include_directories(embarc_mli_lib INTERFACE ${EMBARC_MLI_INCLUDE_DIR})
   add_dependencies(zephyr_interface embarc_mli_lib)
   zephyr_link_libraries(embarc_mli_lib)
