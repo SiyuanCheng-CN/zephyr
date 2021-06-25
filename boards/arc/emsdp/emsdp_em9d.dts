@@ -6,6 +6,7 @@
 
 /dts-v1/;
 
+#include <mem.h>
 #include <emsdp.dtsi>
 #include "board.dtsi"
 
@@ -24,12 +25,12 @@
 	};
 	
 	xccm@90000000 {
-		compatible = "arc,dccm";
+		compatible = "arc,xccm";
 		reg = <0xc0000000 DT_SIZE_K(16)>;
 	};
 
 	yccm@a0000000 {
-		compatible = "arc,dccm";
+		compatible = "arc,yccm";
 		reg = <0xe0000000 DT_SIZE_K(16)>;
 	};
 };
