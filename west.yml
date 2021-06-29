@@ -225,6 +225,10 @@ manifest:
       revision: e18b7a9b040b5b5324520388047c9e7d678447e6
       groups:
         - tee
+    - name: embarc_mli
+      repo-path: embarc_mli
+      path: modules/lib/embarc_mli
+      revision: ef7dd3c4e37d74a908f30713a7d0121387d3c678
 
   self:
     path: zephyr
