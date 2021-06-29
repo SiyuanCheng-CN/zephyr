@@ -77,6 +77,10 @@ SECTIONS {
 
 #include <linker/rel-sections.ld>
 
+#ifdef CONFIG_EMBARC_MLI
+#include "linker/../../modules/embarc_mli/embarc_mli.ld"
+#endif
+
 	GROUP_START(ROMABLE_REGION)
 
 	SECTION_PROLOGUE(_TEXT_SECTION_NAME,,ALIGN(1024)) {
@@ -237,6 +241,8 @@ SECTIONS {
 #endif /* __MWDT_LINKER_CMD__ */
 
 	GROUP_END(RAMABLE_REGION)
+
+
 
 /* Located in generated directory. This file is populated by the
  * zephyr_linker_sources() Cmake function.
