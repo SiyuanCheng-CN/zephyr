@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2021 Synopsys.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
 #ifndef EMBARC_MLI_ROM_REGION
 #define EMBARC_MLI_ROM_REGION		ROMABLE_REGION
 #endif

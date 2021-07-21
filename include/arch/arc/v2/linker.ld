@@ -82,7 +82,7 @@ MEMORY {
 SECTIONS {
 
 #include <linker/rel-sections.ld>
-#include "embarc_mli.ld"
+#include "linker/../../modules/embarc_mli/embarc_mli.ld"
 	GROUP_START(ROMABLE_REGION)
 
 	SECTION_PROLOGUE(_TEXT_SECTION_NAME,,ALIGN(1024)) {
