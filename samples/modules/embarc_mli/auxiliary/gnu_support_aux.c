@@ -1,11 +1,8 @@
 /*
-* Copyright 2019-2021, Synopsys, Inc.
-* All rights reserved.
-*
-* This source code is licensed under the BSD-3-Clause license found in
-* the LICENSE file in the root directory of this source tree.
-*
-*/
+ * Copyright (c) 2021 Synopsys.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
 #ifndef _ARC
 
@@ -33,12 +30,11 @@ void _setvecti(int vector, _Interrupt void (*target)())
 {
 	volatile vect_entry_type *vtab = (_Uncached vect_entry_type *)VECT_START;
 	vtab[vector].target = (void (*)())target;
-	return;
 }
 
 void _sleep(int n)
 {
-	return;
+
 }
 
 void _init_ad(void)

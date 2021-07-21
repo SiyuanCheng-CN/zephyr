@@ -1,10 +1,7 @@
 /*
- * Copyright 2019-2021, Synopsys, Inc.
- * All rights reserved.
+ * Copyright (c) 2021 Synopsys.
  *
- * This source code is licensed under the BSD-3-Clause license found in
- * the LICENSE file in the root directory of this source tree.
- *
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 #ifndef _IDX_FILE_H
@@ -65,11 +62,13 @@ typedef struct {
  *
  * @param[in] path_ - Path to IDX file
  * @param[out] data_ - Pointer to pre-allocated array of sufficient size
- * @param[in/out] data_sz_ - Array size. Will be changed to the total number of elements was read by function.
- *                           If there is not enough data in array this value will contain required size.
+ * @param[in/out] data_sz_ - Array size.
+ *			Will be changed to the total number of elements was read by function.
+ *          If there is not enough data in array this value will contain required size.
  * @param[out] shape_ - IDX array shape
- * @param[in/out] shape_dims_ - Shape array size. Will be changed to the total number of dimensions was read by functions.
- *                              If there is not enough data in array this value will contain required size.
+ * @param[in/out] shape_dims_ - Shape array size.
+ *			Will be changed to the total number of dimensions was read by functions.
+ *          If there is not enough data in array this value will contain required size.
  * @param[out] el_type_ - Basic element type storedd in input IDX file
  *
  *
@@ -113,7 +112,8 @@ uint8_t data_elem_size(tIdxDataType type_);
 /**
  * @brief Check consistency of opened IDX file and fill some descriptor fields
  *
- * @detail Function analyses opened IDX file and fills next fields of descriptor: num_dim, data_type, num_elements
+ * @detail Function analyses opened IDX file and fills next fields of descriptor:
+ *			num_dim, data_type, num_elements
  *
  * @param[in] descr_ - Descriptor of IDX file with correctly opened file (user responsibility)
  *
@@ -138,13 +138,17 @@ void array_file_check_and_get_info(tIdxDescr *descr_, tIdxArrayFlag *target);
 /**
  * @brief Partial data reading from opened IDX file
  *
- * @detail Function reads descr_->num_elements values from file sequentially. Position inside file will be changed accordingly.
- *         If shape_ pointer is not NULL then read dimensions and data from the beginig of the file .
+ * @detail Function reads descr_->num_elements values from file sequentially.
+ *         Position inside file will be changed accordingly.
+ *         If shape_ pointer is not NULL
+ *         then read dimensions and data from the beginig of the file .
  *         Else continue file reading from current position.
  *
  * @param[in] descr_ - Descriptor of IDX file with correctly opened file (user responsibility)
- * @param[in] data_ - Pointer to pre-allocated array of sufficient size (for storing descr_->num_elements values)
- * @param[in] shape_ - Pointer to array with shape. If not NULL - will be filled according to IDX file header
+ * @param[in] data_ - Pointer to pre-allocated array of sufficient size
+ *						(for storing descr_->num_elements values)
+ * @param[in] shape_ - Pointer to array with shape.
+ *              If not NULL - will be filled according to IDX file header
  *
  * @return Operation status code (tIdxRetVal)
  */
@@ -172,9 +176,11 @@ void array_file_read_data(tIdxDescr *descr_, void *data_, uint32_t *shape_, tIdx
  * @brief Write IDX file from input array
  *
  * @detail Writes data to file.
- *          In comparison with idx_file_write_completely it writes only data and fill placeholder for header which
+ *          In comparison with idx_file_write_completely,
+ *          it writes only data and fill placeholder for header which
  *          must be filled separately by idx_file_write_header function.
- *          Function writes descr_->num_elements values to file sequentially. Position inside file will be changed accordingly.
+ *          Function writes descr_->num_elements values to file sequentially.
+ *          Position inside file will be changed accordingly.
  *
  * @param[in] descr_ - Descriptor of IDX file with correctly opened file (user responsibility)
  * @param[in] data_ - Pointer to array for writing
@@ -186,7 +192,8 @@ tIdxRetVal idx_file_write_data(tIdxDescr *descr_, const void *data_);
 /**
  * @brief Fill IDX file header according to provided parameters
  *
- * @detail Function move position of file to the beginning and writes header according to provided data.
+ * @detail Function move position of file to the beginning
+ *         and writes header according to provided data.
  *         Position will be set to the current end of file afterward.
  *
  * @param[in] descr_ - Descriptor of IDX file with correctly opened file (user responsibility)

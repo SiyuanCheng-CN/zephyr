@@ -1,11 +1,8 @@
 /*
-* Copyright 2019-2021, Synopsys, Inc.
-* All rights reserved.
-*
-* This source code is licensed under the BSD-3-Clause license found in
-* the LICENSE file in the root directory of this source tree.
-*
-*/
+ * Copyright (c) 2021 Synopsys.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
 #include "tests_aux.h"
 
 #include <math.h>
@@ -27,7 +24,7 @@
 static const uint32_t kMaxBufSizeToMalloc = 32768;
 static const uint32_t kMinBufSizeToMalloc = 32;
 
-unsigned cycle_cnt = 0u;
+unsigned int cycle_cnt;
 
 const char *test_status_to_str[] = { "PASSED", "SKIPPED", "NOT_ENOUGH_MEM_ERR", "SUIT_ERROR",
 				     "FAILED" };
@@ -123,7 +120,8 @@ test_status load_tensors_from_idx_files(const char *const test_root, const char 
 			}
 
 			elements_accounted += descr.num_elements;
-			tensors[idx]->data = descr.num_elements * elem_size + (uint32_t *)tensors[idx]->data;
+			tensors[idx]->data = descr.num_elements * elem_size
+							+ (uint32_t *)tensors[idx]->data;
 		}
 
 		tensors[idx]->data = addr_backup;

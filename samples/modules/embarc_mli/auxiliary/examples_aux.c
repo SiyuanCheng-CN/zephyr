@@ -1,11 +1,8 @@
 /*
-* Copyright 2019-2021, Synopsys, Inc.
-* All rights reserved.
-*
-* This source code is licensed under the BSD-3-Clause license found in
-* the LICENSE file in the root directory of this source tree.
-*
-*/
+ * Copyright (c) 2021 Synopsys.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
 #include "examples_aux.h"
 
 #include <assert.h>
@@ -18,7 +15,7 @@
  * Find maximum value in the whole tensor and return it's argument (index)
  * Tensor data considered as linear array. Index corresponds to number of element in this array
  */
-static inline int arg_max(mli_tensor *net_output_);
+static inline int arg_max(mli_tensor * net_output_);
 
 /*
  * Return label (int) stored in label container.
@@ -118,7 +115,8 @@ test_status model_run_idx_base_to_idx_out(const char *input_idx_path, const char
 	/* Memory allocation for input/output (for it's external representations) */
 	input_data = malloc((input_elements * data_elem_size(descr_in.data_type)) +
 			    (output_elements * sizeof(float)));
-	output_data = (float *)((uint8_t *)input_data + input_elements * data_elem_size(descr_in.data_type));
+	output_data = (float *)((uint8_t *)input_data
+					+ input_elements * data_elem_size(descr_in.data_type));
 	if (input_data == NULL) {
 		printf("ERROR: Can't allocate memory for input and output\n");
 		ret_val = TEST_NOT_ENOUGH_MEM;

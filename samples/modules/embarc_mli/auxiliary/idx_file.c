@@ -1,11 +1,8 @@
 /*
-* Copyright 2019-2021, Synopsys, Inc.
-* All rights reserved.
-*
-* This source code is licensed under the BSD-3-Clause license found in
-* the LICENSE file in the root directory of this source tree.
-*
-*/
+ * Copyright (c) 2021 Synopsys.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
 #include <string.h>
 
@@ -52,7 +49,6 @@ static void bin2val(void *out_data_, uint8_t *in_data, uint8_t type_sz, uint32_t
 				(uint64_t)(in_data[j + 7]);
 		break;
 	}
-	return;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -111,7 +107,6 @@ static void val2BEbin(uint8_t *out_data_, void *in_data, uint8_t type_sz, uint32
 		}
 		break;
 	}
-	return;
 }
 
 /* -------------------------------------------------------------------------- */
