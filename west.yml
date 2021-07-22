@@ -21,6 +21,8 @@ manifest:
   remotes:
     - name: upstream
       url-base: https://github.com/zephyrproject-rtos
+    - name: embarc
+      url-base: https://github.com/foss-for-synopsys-dwc-arc-processors
 
   #
   # Please add items below based on alphabetical order
@@ -226,6 +228,7 @@ manifest:
       groups:
         - tee
     - name: embarc_mli
+      remote: embarc
       repo-path: embarc_mli
       path: modules/lib/embarc_mli
       revision: 4bd12b63abc6860b6bcbe788cfe39f13d2830742
