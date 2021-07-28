@@ -39,3 +39,4 @@
 #endif
 
 #include <zephyr/arch/arc/v2/linker.ld>
+#include <arch/arc/v2/xy_mem.ld>
