@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 if(CONFIG_EMBARC_MLI)
-  if(NOT DEFINED ENV{METAWARE_ROOT})
+  if(DEFINED ENV{METAWARE_ROOT})
     set(EMBARC_MLI_DIR ${ZEPHYR_CURRENT_MODULE_DIR})
     set(EMBARC_MLI_INCLUDE_DIR ${EMBARC_MLI_DIR}/include ${EMBARC_MLI_DIR}/include/api)
     add_library(embarc_mli_lib STATIC IMPORTED GLOBAL)
@@ -25,6 +25,7 @@ if(CONFIG_EMBARC_MLI)
       TCF_FILE=${EMBARC_MLI_DIR}/hw/em9d.tcf
       BUILD_DIR=${ZEPHYR_BINARY_DIR}/embarc_mli
       LIBRARY_DIR=${ZEPHYR_BINARY_DIR}/embarc_mli/bin
+      JOBS=4
       lib
       INSTALL_COMMAND ""
       BUILD_BYPRODUCTS ${ZEPHYR_BINARY_DIR}/embarc_mli/bin/libmli.a

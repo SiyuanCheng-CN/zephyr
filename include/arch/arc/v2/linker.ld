@@ -77,9 +77,7 @@ SECTIONS {
 
 #include <linker/rel-sections.ld>
 
-#ifdef CONFIG_EMBARC_MLI
-#include "linker/../../modules/embarc_mli/embarc_mli.ld"
-#endif
+
 
 	GROUP_START(ROMABLE_REGION)
 
@@ -182,7 +180,9 @@ SECTIONS {
 #include <linker/common-noinit.ld>
 
 	GROUP_START(DATA_REGION)
-
+#ifdef CONFIG_EMBARC_MLI
+#include "linker/../../modules/embarc_mli/embarc_mli.ld"
+#endif
 	SECTION_DATA_PROLOGUE(_DATA_SECTION_NAME,,) {
 
 /* when XIP, .text is in ROM, but vector table must be at start of .data */
@@ -195,6 +195,7 @@ SECTIONS {
 /* Located in generated directory. This file is populated by the
  * zephyr_linker_sources() Cmake function.
  */
+
 #include <snippets-rwdata.ld>
 
 		__data_end = .;

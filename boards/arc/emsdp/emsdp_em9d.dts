@@ -24,12 +24,12 @@
 		zephyr,shell-uart = &uart0;
 	};
 
-	xccm@90000000 {
+	xccm@c0000000 {
 		compatible = "arc,xccm";
 		reg = <0xc0000000 DT_SIZE_K(16)>;
 	};
 
-	yccm@a0000000 {
+	yccm@e0000000 {
 		compatible = "arc,yccm";
 		reg = <0xe0000000 DT_SIZE_K(16)>;
 	};

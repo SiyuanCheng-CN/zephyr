@@ -246,7 +246,7 @@ manifest:
       remote: embarc
       repo-path: embarc_mli
       path: modules/lib/embarc_mli
-      revision: 4bd12b63abc6860b6bcbe788cfe39f13d2830742
+      revision: 0febb233843b2781e98b0a4761fb5fdb24d561f9
 
   group-filter:
     - -ci
