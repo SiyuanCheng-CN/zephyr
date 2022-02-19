@@ -93,16 +93,18 @@ SECTION_PROLOGUE(embarc_mli_bss,(NOLOAD),)
 } GROUP_DATA_LINK_IN(EMBARC_MLI_BSS_REGION, EMBARC_MLI_BSS_REGION)
 
 
-SECTION_PROLOGUE(embarc_mli_xdata,(NOLOAD),)
+SECTION_PROLOGUE(embarc_mli_xdata,,)
 {
 	__embarc_mli_xdata_start = .;
 	*(.Xdata*)
 	__embarc_mli_xdata_end = .;
 } GROUP_DATA_LINK_IN(EMBARC_MLI_XDATA_REGION, EMBARC_MLI_XDATA_REGION)
+__embarc_mli_loadaddr_xdata = LOADADDR(embarc_mli_xdata);
 
-SECTION_PROLOGUE(embarc_mli_ydata,(NOLOAD),)
+SECTION_PROLOGUE(embarc_mli_ydata,,)
 {
 	__embarc_mli_ydata_start = .;
 	*(.Ydata*)
 	__embarc_mli_ydata_end = .;
 } GROUP_DATA_LINK_IN(EMBARC_MLI_YDATA_REGION, EMBARC_MLI_YDATA_REGION)
+__embarc_mli_loadaddr_ydata = LOADADDR(embarc_mli_ydata);
