@@ -155,7 +155,7 @@ void array_file_check_and_get_info(struct tIdxDescr *descr_, struct tIdxArrayFla
 enum tIdxRetVal idx_file_read_data(struct tIdxDescr *descr_, void *data_, uint32_t *shape_);
 
 /**
- * @brief Partial data reading from opened array file
+ * @brief Write IDX file from input array
  *
  * @detail Function reads descr_->num_elements values from file sequentially.
  *         Position inside file will be changed accordingly.
@@ -163,12 +163,10 @@ enum tIdxRetVal idx_file_read_data(struct tIdxDescr *descr_, void *data_, uint32
  *         then read dimensions and data from the beginig of the file .
  *         Else continue file reading from current position.
  *
- * @param[in] descr_ - Descriptor of array file (user responsibility)
- * @param[in] data_ - Pointer to pre-allocated array of sufficient size
- * @param[in] shape_ - Pointer to array with shape.
- * @param[in] target - Pointer to array.
+ * @param[in] descr_ - Descriptor of IDX file with correctly opened file (user responsibility)
+ * @param[in] data_ - Pointer to array for writing
  *
- * @return No return value
+ * @return Operation status code (tIdxRetVal)
  */
 void array_file_read_data(struct tIdxDescr *descr_, void *data_, uint32_t *shape_,
 			  struct tIdxArrayFlag *target);

@@ -7,9 +7,11 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(hello_world)
 
 zephyr_compile_definitions(
-  __FXAPI__=1
   V2DSP_XY
+  _C_ARRAY_
 )
+
+zephyr_compile_options("-Wno-ignored-qualifiers")
 
 zephyr_library_include_directories(
   ../auxiliary/
@@ -18,10 +20,9 @@ zephyr_library_include_directories(
 
 target_sources(app PRIVATE
     src/ml_api_cifar10_caffe_main.c
-    src/cifar10_coefficients_chw_big.c
-    src/cifar10_coefficients_chw_small.c
+    src/cifar10_coefficients_hwcn_small.c
     src/cifar10_constants.h
-    src/cifar10_model_chw.c
+    src/cifar10_model_hwcn.c
     src/cifar10_model.h
     src/cifar10_ref_inout.h
     ../auxiliary/examples_aux.c

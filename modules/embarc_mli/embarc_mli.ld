@@ -25,7 +25,7 @@
 #endif
 
 #ifndef EMBARC_MLI_MODEL_REGION
-#define EMBARC_MLI_MODEL_REGION		XCCM
+#define EMBARC_MLI_MODEL_REGION		DCCM
 #endif
 
 #ifndef EMBARC_MLI_XDATA_REGION
@@ -48,33 +48,8 @@ SECTION_PROLOGUE(embarc_mli_rom,,)
 	*libmli*.a:*(.mli_lib*)
 	*libmli*.a:*(.rodata .rodata.*)
 	__embarc_mli_rom_end = .;
-} GROUP_DATA_LINK_IN(EMBARC_MLI_ROM_REGION, ROMABLE_REGION)
+} GROUP_DATA_LINK_IN(ROMABLE_REGION, ROMABLE_REGION)
 __embarc_mli_loadaddr_rom = LOADADDR(embarc_mli_rom);
-
-SECTION_PROLOGUE(embarc_mli_data,,)
-{
-	__embarc_mli_data_start = .;
-	*libmli*.a:*(.rodata_in_data .rodata_in_data.*)
-	*libmli*.a:*(.data .data.*)
-	__embarc_mli_data_end = .;
-} GROUP_DATA_LINK_IN(EMBARC_MLI_DATA_REGION, ROMABLE_REGION)
-__embarc_mli_loadaddr_data = LOADADDR(embarc_mli_data);
-
-SECTION_PROLOGUE(embarc_mli_zdata,,)
-{
-	__embarc_mli_zdata_start = .;
-	*(.Zdata)
-	__embarc_mli_zdata_end = .;
-} GROUP_DATA_LINK_IN(EMBARC_MLI_ZDATA_REGION, ROMABLE_REGION)
-__embarc_mli_loadaddr_zdata = LOADADDR(embarc_mli_zdata);
-
-SECTION_PROLOGUE(embarc_mli_model_p2,,)
-{
-	__embarc_mli_model_p2_start = .;
-	*(.mli_model_p2 .mli_model_p2.*)
-	__embarc_mli_model_p2_end = .;
-} GROUP_DATA_LINK_IN(EMBARC_MLI_MODEL_P2_REGION, ROMABLE_REGION)
-__embarc_mli_loadaddr_model_p2 = LOADADDR(embarc_mli_model_p2);
 
 SECTION_PROLOGUE(embarc_mli_model,,)
 {
@@ -84,21 +59,37 @@ SECTION_PROLOGUE(embarc_mli_model,,)
 } GROUP_DATA_LINK_IN(EMBARC_MLI_MODEL_REGION, ROMABLE_REGION)
 __embarc_mli_loadaddr_model = LOADADDR(embarc_mli_model);
 
-
-SECTION_PROLOGUE(embarc_mli_bss,(NOLOAD),)
+SECTION_PROLOGUE(embarc_mli_model_p2,,)
 {
-	__embarc_mli_bss_start = .;
-	*libmli*.a:*(.bss .bss.*)
-	__embarc_mli_bss_end = .;
-} GROUP_DATA_LINK_IN(EMBARC_MLI_BSS_REGION, EMBARC_MLI_BSS_REGION)
+	__embarc_mli_model_p2_start = .;
+	*(.mli_model_p2 .mli_model_p2.*)
+	__embarc_mli_model_p2_end = .;
+} GROUP_DATA_LINK_IN(EMBARC_MLI_MODEL_P2_REGION, ROMABLE_REGION)
+__embarc_mli_loadaddr_model_p2 = LOADADDR(embarc_mli_model_p2);
 
+SECTION_PROLOGUE(embarc_mli_data,,)
+{
+	__embarc_mli_data_start = .;
+	*libmli*.a:*(.data .data.*)
+	*libmli*.a:*(.rodata_in_data .rodata_in_data.*)
+	__embarc_mli_data_end = .;
+} GROUP_DATA_LINK_IN(EMBARC_MLI_DATA_REGION, ROMABLE_REGION)
+__embarc_mli_loadaddr_data = LOADADDR(embarc_mli_data);
+
+SECTION_PROLOGUE(embarc_mli_zdata,,)
+{
+	__embarc_mli_zdata_start = .;
+	*(.Zdata*)
+	__embarc_mli_zdata_end = .;
+} GROUP_DATA_LINK_IN(EMBARC_MLI_ZDATA_REGION, ROMABLE_REGION)
+__embarc_mli_loadaddr_zdata = LOADADDR(embarc_mli_zdata);
 
 SECTION_PROLOGUE(embarc_mli_xdata,,)
 {
 	__embarc_mli_xdata_start = .;
 	*(.Xdata*)
 	__embarc_mli_xdata_end = .;
-} GROUP_DATA_LINK_IN(EMBARC_MLI_XDATA_REGION, EMBARC_MLI_XDATA_REGION)
+} GROUP_DATA_LINK_IN(EMBARC_MLI_XDATA_REGION, RAMABLE_REGION)
 __embarc_mli_loadaddr_xdata = LOADADDR(embarc_mli_xdata);
 
 SECTION_PROLOGUE(embarc_mli_ydata,,)
@@ -106,5 +97,5 @@ SECTION_PROLOGUE(embarc_mli_ydata,,)
 	__embarc_mli_ydata_start = .;
 	*(.Ydata*)
 	__embarc_mli_ydata_end = .;
-} GROUP_DATA_LINK_IN(EMBARC_MLI_YDATA_REGION, EMBARC_MLI_YDATA_REGION)
+} GROUP_DATA_LINK_IN(EMBARC_MLI_YDATA_REGION, RAMABLE_REGION)
 __embarc_mli_loadaddr_ydata = LOADADDR(embarc_mli_ydata);

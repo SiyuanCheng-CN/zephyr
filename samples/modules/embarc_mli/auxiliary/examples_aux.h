@@ -17,6 +17,7 @@
 
 #include "mli_api.h"
 #include "tests_aux.h"
+#include "mli_config.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -114,6 +115,14 @@ enum test_status model_run_idx_base_to_idx_out(const char *input_idx_path,
 					  mli_tensor *model_input, mli_tensor *model_output,
 					  preproc_func_t preprocess, model_inference_t inference,
 					  const char *inf_param);
+
+#if (PLATFORM == V2DSP_XY)
+#define FAST_TYPE(t) __xy t
+#elif (PLATFORM == V2DSP_VECTOR) && !defined(MLI_BUILD_REFERENCE)
+#define FAST_TYPE(t) __vccm t
+#else
+#define FAST_TYPE(t) t
+#endif
 
 #ifdef __cplusplus
 } /* end extern "C" */

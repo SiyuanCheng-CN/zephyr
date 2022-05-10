@@ -1,8 +1,11 @@
 /*
- * Copyright (c) 2021 Synopsys.
- *
- * SPDX-License-Identifier: Apache-2.0
- */
+* Copyright 2019-2021, Synopsys, Inc.
+* All rights reserved.
+*
+* This source code is licensed under the BSD-3-Clause license found in
+* the LICENSE file in the root directory of this source tree.
+*
+*/
 
 #ifndef _TESTS_AUX_H
 #define _TESTS_AUX_H
@@ -14,8 +17,6 @@
 
 #include <stdint.h>
 #include "mli_api.h"
-#define _lr __builtin_arc_lr
-#define _sr __builtin_arc_sr
 
 #ifdef __cplusplus
 extern "C" {
@@ -50,15 +51,15 @@ extern unsigned int cycle_cnt;
 /** @def Profiling macro for calculating cyclecount */
 /* (uses arc specific timer and it's sw interface)*/
 #if defined(PROFILING_ON)
-#ifdef _ARC
-/* MWDT toolchain profiling */
+#if defined(__CCAC__)
+//MWDT toolchain profiling
 #include <arc/arc_timer.h>
-#define PROFILE(F)                                                                                 \
-	_timer_default_reset();                                                                    \
-	F;                                                                                         \
-	cycle_cnt = _timer_default_read();
-#else
-/* GNU toolchain profiling */
+#define PROFILE(F)  \
+    _timer_default_reset();\
+    F;\
+    cycle_cnt = _timer_default_read();
+#elif defined(_ARC)
+// Another ARC toolchain profiling (ARC_GNU)
 static inline void test_aux_start_timer_0(void)
 {
 	_sr(0, 0x22);
@@ -67,44 +68,42 @@ static inline void test_aux_start_timer_0(void)
 	_sr(0, 0x21);
 }
 
-static inline uint32_t test_aux_read_timer_0(void)
-{
-	return _lr(0x21);
+static inline uint32_t test_aux_read_timer_0() {
+    return (_lr(0x21));
 }
 
-static inline void test_aux_stop_timer_0(void)
-{
-	_sr(0, 0x22);
+static inline void test_aux_stop_timer_0() {
+    _sr (0 , 0x22);
 }
 
-static inline void test_aux_start_timer_1(void)
-{
-	_sr(0, 0x101);
-	_sr(0xffffffff, 0x102);
-	_sr(3, 0x101);
-	_sr(0, 0x100);
+static inline void test_aux_start_timer_1() {
+    _sr(0 , 0x101);
+    _sr(0xffffffff, 0x102);
+    _sr(3, 0x101);
+    _sr(0, 0x100);
 }
 
-static inline uint32_t test_aux_read_timer_1(void)
-{
-	return _lr(0x100);
+static inline uint32_t test_aux_read_timer_1() {
+    return( _lr(0x100) );
 }
 
-static inline void test_aux_stop_timer_1(void)
-{
-	_sr(0, 0x101);
+static inline void test_aux_stop_timer_1() {
+    _sr (0 , 0x101);
 }
 
-#define PROFILE(F)                                                                                 \
-	test_aux_start_timer_0();                                                                  \
-	F;                                                                                         \
-	cycle_cnt = test_aux_read_timer_0();
-#endif
+#define PROFILE(F) \
+    test_aux_start_timer_0(); \
+    F;\
+    cycle_cnt = test_aux_read_timer_0();
 #else
-#define PROFILE(F)                                                                                 \
-	cycle_cnt = 0;                                                                             \
-	F;
+// Another platform (host). ctime support is expected
+#include <time.h>
+#define PROFILE(F) \
+    cycle_cnt = clock();\
+    F;\
+    cycle_cnt = clock() - cycle_cnt;
 #endif
+#endif //PROFILING_ON
 
 /* -------------------------------------------------------------------------- */
 /*                                    Data                                    */
@@ -112,54 +111,48 @@ static inline void test_aux_stop_timer_1(void)
 
 /** @enum Function Return codes  */
 enum test_status {
-	TEST_PASSED = 0, /**< No error occurred */
-	TEST_SKIPPED, /**< Test was skipped */
-	TEST_NOT_ENOUGH_MEM, /**< Not enough memory for test */
-	TEST_SUIT_ERROR, /**< Error insed test suite code */
-	TEST_FAILED, /**< Testing function returns unexpected result */
+    TEST_PASSED = 0,        /**< No error occurred */
+    TEST_SKIPPED,           /**< Test was skipped */
+    TEST_NOT_ENOUGH_MEM,    /**< Not enough memory for test */
+    TEST_SUIT_ERROR,        /**< Error insed test suite code */
+    TEST_FAILED,            /**< Testing function returns unexpected result */
 };
 
-/** @var Array with discriptive strings according to each error code */
-/* (test_status_to_str[TEST_PASSED])*/
+/** @var Array with discriptive strings according to each error code (test_status_to_str[TEST_PASSED])*/
 extern const char *test_status_to_str[];
 
 /** @struct error measurement metrics for two vectors  */
 struct ref_to_pred_output {
-	/**< maximum absolute error  */
-	float max_abs_err;
-	/**< Length of predicted vector: SQRT(sum_i(pred[i]^2))  */
-	float pred_vec_length;
-	/**< Length of reference vector: SQRT(sum_i(ref[i]^2))  */
-	float ref_vec_length;
-	/**< Length of reference vector: SQRT(sum_i((ref[i]-pred[i])^2))  */
-	float noise_vec_length;
-	/**< Length of quantized error vector: SQRT(sum_i((ref[i]-Quantized(ref[i]))^2))  */
-	float quant_err_vec_length;
-	/**< Signal-to-noise ratio 10*log_10((ref_vec_length+eps)/(noise_vec_length+eps))  [dB]*/
-	float ref_to_noise_snr;
-	/**< Noise-to-quantization_err ratio (noise_vec_length)/(quant_err_vec_length+eps)  */
-	float noise_to_quant_ratio;
+    float max_abs_err;          /**< maximum absolute error  */
+    float pred_vec_length;      /**< Length of predicted vector: SQRT(sum_i(pred[i]^2))  */
+    float ref_vec_length;       /**< Length of reference vector: SQRT(sum_i(ref[i]^2))  */
+    float noise_vec_length;     /**< Length of reference vector: SQRT(sum_i((ref[i]-pred[i])^2))  */
+    float quant_err_vec_length; /**< Length of quantized error vector: SQRT(sum_i((ref[i]-Quantized(ref[i]))^2))  */
+    float ref_to_noise_snr;     /**< Signal-to-noise ratio 10*log_10((ref_vec_length+eps)/(noise_vec_length+eps))  [dB]*/
+    float noise_to_quant_ratio; /**< Noise-to-quantization_err ratio (noise_vec_length)/(quant_err_vec_length+eps)  */
 };
 
-/* -------------------------------------------------------------------------- */
-/*                                  Functions                                 */
-/* -------------------------------------------------------------------------- */
+//==================================================
+//
+//      Functions
+//
+//==================================================
 
 /**
  * @brief Load several tensors from IDX files
  *
  * @detail Load *paths_num* tensors from external IDX files (test_root/paths[i]) to MLI tensors.
  *         Each tensor must contain sufficient array for storing data of each IDX file accordingly.
- *         Function uses dynamic memory allocation and standard file input/output.
+ *         Function uses dynamic memory allocation and standart file input/output.
  *         Function function releases all occupied resources before return.
  *
  * @param[in] test_root - root path to all IDX files listed in *paths* array
  * @param[in] paths[] - paths to input IDX files for reading (test_root/paths[i])
  * @param[out] tensors[] - Pointer to output tensors arrayr
- * @param[in] paths_num - Number of idx files for reading(also number of tensors in tensors[] array)
+ * @param[in] paths_num - Number of idx files for reading (also number of tensors in tensors[] array)
  *
  * @return Operation status code (test_status)
- */
+  */
 enum test_status load_tensors_from_idx_files(const char *const test_root, const char *const paths[],
 					mli_tensor *tensors[], uint32_t paths_num);
 
