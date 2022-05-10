@@ -47,7 +47,7 @@ Run example
 
         west flash
 
-    Result Quality shall be "S/N=1823.9     (65.2 db)"
+    Result Quality shall be "S/N=3579.6     (71.1 db)"
 
 More options
 --------------

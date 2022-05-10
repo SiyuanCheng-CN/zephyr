@@ -75,10 +75,6 @@ You can add different definitions to zephyr_compile_definitions() in 'zephyr/sam
 
        MODEL_BIT_DEPTH=816
 
-* Big neural network model (default is small model):
-
-       MODEL_BIG
-
 * If hostlink is not available, please reads vectors from input Array file, passes it to the model, and accumulates number of successive classifications according to labels array file:
 
        _C_ARRAY_

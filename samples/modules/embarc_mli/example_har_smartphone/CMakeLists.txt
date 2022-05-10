@@ -7,9 +7,12 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(hello_world)
 
 zephyr_compile_definitions(
-  __FXAPI__=1
+  MODEL_BIT_DEPTH=16
   V2DSP_XY
+  _C_ARRAY_
 )
+
+zephyr_compile_options("-Wno-ignored-qualifiers")
 
 zephyr_library_include_directories(
   ../auxiliary/
@@ -18,9 +21,11 @@ zephyr_library_include_directories(
 
 target_sources(app PRIVATE
     src/ml_api_har_smartphone_main.c
-    src/har_smartphone_coefficients.c
+    src/har_smartphone_coefficients_fx.c
+    src/har_smartphone_coefficients_sa.c
     src/har_smartphone_constants.h
-    src/har_smartphone_model.c
+    src/har_smartphone_model_sa.c
+    src/har_smartphone_model_fx.c
     src/har_smartphone_model.h
     src/har_smartphone_ref_inout.h
     ../auxiliary/examples_aux.c
