@@ -127,7 +127,14 @@ SECTIONS {
 #else
 #include <linker/cplusplus-rom.ld>
 #endif /* __MWDT_LINKER_CMD__ */
-
+SECTION_PROLOGUE(embarc_mli_rom,,)
+{
+	__embarc_mli_rom_start = .;
+	*libmli*.a:*(.mli_lib*)
+	*libmli*.a:*(.rodata .rodata.*)
+	__embarc_mli_rom_end = .;
+} GROUP_DATA_LINK_IN(ROMABLE_REGION, ROMABLE_REGION)
+__embarc_mli_loadaddr_rom = LOADADDR(embarc_mli_rom);
 	__rodata_region_end = .;
 	MPU_ALIGN(__rodata_region_end - __rom_region_start);
 	__rom_region_end = .;
@@ -240,7 +247,21 @@ SECTIONS {
 	_fstack = _image_ram_start;
 	_estack = .;
 #endif /* __MWDT_LINKER_CMD__ */
+SECTION_PROLOGUE(embarc_mli_xdata,,)
+{
+	__embarc_mli_xdata_start = .;
+	*(.Xdata*)
+	__embarc_mli_xdata_end = .;
+} GROUP_DATA_LINK_IN(EMBARC_MLI_XDATA_REGION, RAMABLE_REGION)
+__embarc_mli_loadaddr_xdata = LOADADDR(embarc_mli_xdata);
 
+SECTION_PROLOGUE(embarc_mli_ydata,,)
+{
+	__embarc_mli_ydata_start = .;
+	*(.Ydata*)
+	__embarc_mli_ydata_end = .;
+} GROUP_DATA_LINK_IN(EMBARC_MLI_YDATA_REGION, RAMABLE_REGION)
+__embarc_mli_loadaddr_ydata = LOADADDR(embarc_mli_ydata);
 	GROUP_END(RAMABLE_REGION)
 
 
