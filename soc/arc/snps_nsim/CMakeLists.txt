@@ -18,9 +18,12 @@ else()
   # MWDT compiler options
   zephyr_compile_options_ifdef(CONFIG_SOC_NSIM_EM -arcv2em -core3 -Xdiv_rem=radix2
 			       -Xmpy_option=mpyd -Xbitscan -Xswap -Xbarrel_shifter
-			       -Xshift_assist -Xdsp2 -Xdsp_complex
-			       -Xdsp_divsqrt=radix2 -Xdsp_itu -Xdsp_accshift=full
-			       -Xfpus_div -Xfpu_mac -Xfpuda -Xfpus_mpy_slow
+             -Xshift_assist -Xdsp2 -Xdsp_complex -Xxy -Xunaligned -Xcode_density
+             -Xxy_config=dccm_x_y -Xdsp_ctrl=postshift,guard,convergent -HL -Hccm
+             -Wcg,-arc-vdsp-AA=1 -mllvm -gen-lpcc=false -mllvm -mllvm -Hfxapi -Hnocopyr -Hpurge 
+             -Hldopt=-q -Hsdata0 -Hdense_prologue -Hxcheck -Hcppext=cpp,ii,cc,cxx,C
+             -Xdsp_divsqrt=radix2 -Xdsp_itu -Xdsp_accshift=full -Xagu_large
+			       -Xfpus -Xfpus_div -Xfpu_mac -Xfpuda -Xfpus_mpy_slow
 			       -Xfpus_div_slow -Xbitstream -Xtimer0 -Xtimer1)
 
   zephyr_compile_options_ifdef(CONFIG_SOC_NSIM_SEM -arcv2em -core3 -Xcode_density

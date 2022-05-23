@@ -14,6 +14,7 @@
 #include "tensor_transform.h"
 
 /* Assert wrapper: works only in DBG_MODE_FULL and DBG_MODE_DEBUG */
+#undef DEBUG
 #if defined(DEBUG)
 #include <assert.h>
 #define DEBUG_BREAK assert(0)
