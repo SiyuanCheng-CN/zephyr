@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 if(CONFIG_EMBARC_MLI)
+  zephyr_ld_options(-mfpu=fpuda_all)
   if(DEFINED ENV{METAWARE_ROOT})
     set(EMBARC_MLI_DIR ${ZEPHYR_CURRENT_MODULE_DIR})
     set(EMBARC_MLI_INCLUDE_DIR ${EMBARC_MLI_DIR}/include ${EMBARC_MLI_DIR}/include/api)

@@ -84,9 +84,27 @@
 	lr r13, [_ARC_V2_FPU_DPFP2H]
 	st_s r13, [sp, ___callee_saved_stack_t_dpfp2h_OFFSET]
 #endif
-1 :
 #endif
 
+#ifdef CONFIG_ARC_DSP
+	lr r13, [_ARC_V2_DSP_CTRL]
+	st_s r13, [sp, ___callee_saved_stack_t_dsp_ctrl_OFFSET]
+	lr r13, [_ARC_V2_ACC0_LO]
+	st_s r13, [sp, ___callee_saved_stack_t_acc0_lo_OFFSET]
+	lr r13, [_ARC_V2_ACC0_GLO]
+	st_s r13, [sp, ___callee_saved_stack_t_acc0_glo_OFFSET]
+	lr r13, [_ARC_V2_ACC0_HI]
+	st_s r13, [sp, ___callee_saved_stack_t_acc0_hi_OFFSET]
+	lr r13, [_ARC_V2_ACC0_GHI]
+	st_s r13, [sp, ___callee_saved_stack_t_acc0_ghi_OFFSET]
+#ifdef CONFIG_ARC_DSP_COMPLEX
+	lr r13, [_ARC_V2_DSP_BFLY0]
+	st_s r13, [sp, ___callee_saved_stack_t_dsp_bfly0_OFFSET]
+	lr r13, [_ARC_V2_DSP_FFT_CTRL]
+	st_s r13, [sp, ___callee_saved_stack_t_dsp_fft_ctrl_OFFSET]
+#endif
+#endif
+1 :
 	/* save stack pointer in struct k_thread */
 	STR sp, r2, _thread_offset_to_sp
 .endm
@@ -120,6 +138,25 @@
 	sr r13, [_ARC_V2_FPU_DPFP2L]
 	ld_s r13, [sp, ___callee_saved_stack_t_dpfp2h_OFFSET]
 	sr r13, [_ARC_V2_FPU_DPFP2H]
+#endif
+
+#ifdef CONFIG_ARC_DSP
+	ld_s r13, [sp, ___callee_saved_stack_t_dsp_ctrl_OFFSET]
+	sr r13, [_ARC_V2_DSP_CTRL]
+	ld_s r13, [sp, ___callee_saved_stack_t_acc0_lo_OFFSET]
+	sr r13, [_ARC_V2_ACC0_LO]
+	ld_s r13, [sp, ___callee_saved_stack_t_acc0_glo_OFFSET]
+	sr r13, [_ARC_V2_ACC0_GLO]
+	ld_s r13, [sp, ___callee_saved_stack_t_acc0_hi_OFFSET]
+	sr r13, [_ARC_V2_ACC0_HI]
+	ld_s r13, [sp, ___callee_saved_stack_t_acc0_ghi_OFFSET]
+	sr r13, [_ARC_V2_ACC0_GHI]
+#ifdef CONFIG_ARC_DSP_COMPLEX
+	ld_s r13, [sp, ___callee_saved_stack_t_dsp_bfly0_OFFSET]
+	sr r13, [_ARC_V2_DSP_BFLY0]
+	ld_s r13, [sp, ___callee_saved_stack_t_dsp_fft_ctrl_OFFSET]
+	sr r13, [_ARC_V2_DSP_FFT_CTRL]
+#endif
 #endif
 2 :
 #endif

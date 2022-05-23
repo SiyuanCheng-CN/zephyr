@@ -118,6 +118,13 @@
 #define _ARC_V2_MPU_REND 0x44A
 #define _ARC_V2_MPU_RPER 0x44B
 #define _ARC_V2_MPU_PROBE 0x44C
+#define _ARC_V2_ACC0_GHI 0x583
+#define _ARC_V2_ACC0_HI 0x582
+#define _ARC_V2_ACC0_GLO 0x581
+#define _ARC_V2_ACC0_LO 0x580
+#define _ARC_V2_DSP_CTRL 0x59f
+#define _ARC_V2_DSP_BFLY0 0x598
+#define _ARC_V2_DSP_FFT_CTRL 0x59e
 
 /* STATUS32/STATUS32_P0 bits */
 #define _ARC_V2_STATUS32_H (1 << 0)
