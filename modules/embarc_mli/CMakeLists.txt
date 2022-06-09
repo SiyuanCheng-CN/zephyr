@@ -23,7 +23,7 @@ if(CONFIG_EMBARC_MLI)
       CONFIGURE_COMMAND ""         # Skip configuring the project, e.g. with autoconf
       BUILD_COMMAND
       gmake -C ${EMBARC_MLI_DIR}
-      TCF_FILE=${EMBARC_MLI_DIR}/hw/em9d.tcf
+      TCF_FILE=${EMBARC_MLI_DIR}/hw/arcem.tcf
       BUILD_DIR=${ZEPHYR_BINARY_DIR}/embarc_mli
       LIBRARY_DIR=${ZEPHYR_BINARY_DIR}/embarc_mli/bin
       JOBS=4
