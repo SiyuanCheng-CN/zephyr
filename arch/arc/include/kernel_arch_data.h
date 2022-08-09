@@ -156,8 +156,20 @@ struct _callee_saved_stack {
 	uintptr_t dpfp1h;
 	uintptr_t dpfp1l;
 #endif
-
 #endif
+
+#ifdef CONFIG_DSP
+#ifdef CONFIG_ARC_DSP_COMPLEX
+	uintptr_t dsp_fft_ctrl;
+	uintptr_t dsp_bfly0;
+#endif
+	uintptr_t acc0_ghi;
+	uintptr_t acc0_hi;
+	uintptr_t acc0_glo;
+	uintptr_t acc0_lo;
+	uintptr_t dsp_ctrl;
+#endif
+
 	/*
 	 * No need to save r31 (blink), it's either already pushed as the pc or
 	 * blink on an irq stack frame.

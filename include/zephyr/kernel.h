@@ -205,6 +205,13 @@ extern void k_thread_foreach_unlocked(
  */
 #define K_CALLBACK_STATE (BIT(4))
 
+#if defined(CONFIG_DSP)
+/**
+ * @brief DSP registers are managed by context switch
+ */
+#define K_DSP_REGS (BIT(5))
+#endif
+
 #ifdef CONFIG_X86
 /* x86 Bitmask definitions for threads user options */
 

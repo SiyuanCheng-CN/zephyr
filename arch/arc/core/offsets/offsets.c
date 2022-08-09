@@ -115,6 +115,17 @@ GEN_OFFSET_SYM(_callee_saved_stack_t, dpfp2l);
 GEN_OFFSET_SYM(_callee_saved_stack_t, dpfp1h);
 GEN_OFFSET_SYM(_callee_saved_stack_t, dpfp1l);
 #endif
+#endif
+#ifdef CONFIG_DSP
+GEN_OFFSET_SYM(_callee_saved_stack_t, dsp_ctrl);
+GEN_OFFSET_SYM(_callee_saved_stack_t, acc0_lo);
+GEN_OFFSET_SYM(_callee_saved_stack_t, acc0_glo);
+GEN_OFFSET_SYM(_callee_saved_stack_t, acc0_hi);
+GEN_OFFSET_SYM(_callee_saved_stack_t, acc0_ghi);
+#ifdef CONFIG_ARC_DSP_COMPLEX
+GEN_OFFSET_SYM(_callee_saved_stack_t, dsp_bfly0);
+GEN_OFFSET_SYM(_callee_saved_stack_t, dsp_fft_ctrl);
+#endif
 
 #endif
 GEN_ABSOLUTE_SYM(___callee_saved_stack_t_SIZEOF, sizeof(_callee_saved_stack_t));

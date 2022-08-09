@@ -327,6 +327,16 @@ config ARC_NORMAL_FIRMWARE
 	  resources of the ARC processors, and, therefore, it shall avoid
 	  accessing them.
 
+config ARC_DSP_COMPLEX
+	bool "ARC complex DSP operation"
+	depends on DSP && CPU_ARCEM
+	default n
+	help
+	  This option is to enable Zephyr to store and retore DSP_BFLY0
+	  and FFT_CTRL registers during context switch. This option is
+	  only required when butterfly instrutions are used in
+	  multi-thread.
+
 menu "ARC MPU Options"
 depends on CPU_HAS_MPU
 
