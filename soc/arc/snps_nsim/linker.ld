@@ -33,5 +33,5 @@
 #define SRAM_SIZE		DT_REG_SIZE(DT_CHOSEN(zephyr_sram))
 #endif
 
+#include <zephyr/arch/arc/v2/xy_mem.ld>
 #include <zephyr/arch/arc/v2/linker.ld>
-#include <arch/arc/v2/xy_mem.ld>

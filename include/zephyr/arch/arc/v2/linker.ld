@@ -188,7 +188,7 @@ __embarc_mli_loadaddr_rom = LOADADDR(embarc_mli_rom);
 
 	GROUP_START(DATA_REGION)
 #ifdef CONFIG_EMBARC_MLI
-#include "linker/../../modules/embarc_mli/embarc_mli.ld"
+#include "linker/../../../modules/embarc_mli/embarc_mli.ld"
 #endif
 	SECTION_DATA_PROLOGUE(_DATA_SECTION_NAME,,) {
 
