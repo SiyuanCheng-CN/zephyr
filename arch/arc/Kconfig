@@ -105,6 +105,11 @@ endif #ISA_ARCV3
 config FP_FPU_DA
 	bool
 
+config ARC_DSP_COMPLEX
+	bool
+	depends on DSP
+	default y
+
 config ARC_DSP
 	bool
 	default y
