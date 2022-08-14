@@ -70,9 +70,9 @@ void task2(){
 }
 
 K_THREAD_DEFINE(task1_id, STACKSIZE, task1, NULL, NULL, NULL,
-		PRIORITY, K_DSP_REGS, 0);
+		PRIORITY, K_FP_REGS | K_DSP_REGS, 0);
 K_THREAD_DEFINE(task2_id, STACKSIZE, task2, NULL, NULL, NULL,
-		-1, K_DSP_REGS, 0);
+		-1, K_FP_REGS | K_DSP_REGS, 0);
 
 //========================================================================================
 // Image pre-processing for CIFAR-10 net
