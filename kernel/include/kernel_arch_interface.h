@@ -208,6 +208,39 @@ int arch_float_disable(struct k_thread *thread);
 int arch_float_enable(struct k_thread *thread, unsigned int options);
 #endif /* CONFIG_FPU && CONFIG_FPU_SHARING */
 
+#if defined(CONFIG_DSP) && defined(CONFIG_DSP_SHARING)
+/**
+ * @brief Disable dsp context preservation
+ *
+ * The function is used to disable the preservation of dsp
+ * context information for a particular thread.
+ *
+ *
+ * @retval 0        On success.
+ * @retval -EINVAL  If the dsp disabling could not be performed.
+ * @retval -ENOTSUP If the operation is not supported
+ */
+int arch_dsp_disable(struct k_thread *thread);
+
+/**
+ * @brief Enable dsp context preservation
+ *
+ * The function is used to enable the preservation of dsp
+ * context information for a particular thread.
+ * This API depends on each architecture implimentation. If the architecture
+ * does not support enabling, this API will always be failed.
+ *
+ *
+ * @param thread  ID of thread.
+ * @param options architecture dependent options
+ *
+ * @retval 0        On success.
+ * @retval -EINVAL  If the dsp enabling could not be performed.
+ * @retval -ENOTSUP If the operation is not supported
+ */
+int arch_dsp_enable(struct k_thread *thread, unsigned int options);
+#endif /* CONFIG_FPU && CONFIG_FPU_SHARING */
+
 /** @} */
 
 /**

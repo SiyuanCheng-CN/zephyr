@@ -5895,6 +5895,10 @@ __syscall int k_float_disable(struct k_thread *thread);
  */
 __syscall int k_float_enable(struct k_thread *thread, unsigned int options);
 
+__syscall int k_dsp_disable(struct k_thread *thread);
+
+__syscall int k_dsp_enable(struct k_thread *thread, unsigned int options);
+
 /**
  * @brief Get the runtime statistics of a thread
  *

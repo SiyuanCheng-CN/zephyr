@@ -86,7 +86,7 @@
 #endif
 #endif
 1 :
-#ifdef CONFIG_DSP
+#ifdef CONFIG_DSP_SHARING
 	ld_s r13, [r2, ___thread_base_t_user_options_OFFSET]
 	/* K_DSP_REGS is bit 5 */
 	bbit0 r13, 5, 2f
@@ -144,7 +144,7 @@
 #endif
 #endif
 3 :
-#ifdef CONFIG_DSP
+#ifdef CONFIG_DSP_SHARING
 	ld_s r13, [r2, ___thread_base_t_user_options_OFFSET]
 	/* K_DSP_REGS is bit 5 */
 	bbit0 r13, 5, 4f
