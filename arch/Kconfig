@@ -747,13 +747,21 @@ config FPU_SHARING
 
 endmenu
 
-menu "Floating Point Options"
+menu "Digital Signal Processing Options"
 
 config DSP
 	bool "Enable digital signal processing (DSP)"
 	depends on CPU_HAS_DSP
 	help
 	  This option enables DSP and DSP instructions.
+
+config DSP_SHARING
+	bool "DSP register sharing"
+	depends on DSP && MULTITHREADING
+	help
+	  This option enables preservation of the hardware DSP registers
+	  across context switches to allow multiple threads to perform concurrent
+	  DSP operations.
 
 endmenu
 

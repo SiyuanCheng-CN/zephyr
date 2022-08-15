@@ -116,7 +116,7 @@ GEN_OFFSET_SYM(_callee_saved_stack_t, dpfp1h);
 GEN_OFFSET_SYM(_callee_saved_stack_t, dpfp1l);
 #endif
 #endif
-#ifdef CONFIG_DSP
+#ifdef CONFIG_DSP_SHARING
 GEN_OFFSET_SYM(_callee_saved_stack_t, dsp_ctrl);
 GEN_OFFSET_SYM(_callee_saved_stack_t, acc0_lo);
 GEN_OFFSET_SYM(_callee_saved_stack_t, acc0_glo);

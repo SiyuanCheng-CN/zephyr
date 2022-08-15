@@ -158,7 +158,7 @@ struct _callee_saved_stack {
 #endif
 #endif
 
-#ifdef CONFIG_DSP
+#ifdef CONFIG_DSP_SHARING
 #ifdef CONFIG_ARC_DSP_COMPLEX
 	uintptr_t dsp_fft_ctrl;
 	uintptr_t dsp_bfly0;

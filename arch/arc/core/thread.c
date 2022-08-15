@@ -253,3 +253,37 @@ int arch_float_enable(struct k_thread *thread, unsigned int options)
 	return 0;
 }
 #endif /* CONFIG_FPU && CONFIG_FPU_SHARING */
+
+#if defined(CONFIG_DSP) && defined(CONFIG_DSP_SHARING)
+int arch_dsp_disable(struct k_thread *thread)
+{
+	unsigned int key;
+
+	/* Ensure a preemptive context switch does not occur */
+
+	key = irq_lock();
+
+	/* Disable all floating point capabilities for the thread */
+	thread->base.user_options &= ~K_DSP_REGS;
+
+	irq_unlock(key);
+
+	return 0;
+}
+
+int arch_dsp_enable(struct k_thread *thread, unsigned int options)
+{
+	unsigned int key;
+
+	/* Ensure a preemptive context switch does not occur */
+
+	key = irq_lock();
+
+	/* Enable all floating point capabilities for the thread */
+	thread->base.user_options |= K_DSP_REGS;
+
+	irq_unlock(key);
+
+	return 0;
+}
+#endif /* CONFIG_DSP && CONFIG_DSP_SHARING */

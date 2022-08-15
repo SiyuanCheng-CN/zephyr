@@ -44,35 +44,37 @@ static void cifar10_preprocessing(const void * image_, mli_tensor * net_input_);
 char param[3][256]={"dummy_for_check","small_test_base/tests.idx","small_test_base/labels.idx"};// emulation argv for GNU toolchain
 
 void task1(){
+    k_dsp_disable(k_current_get());
     while(1){
-        model_run_acc_on_idx_base(param[1], param[2],
-                cifar10_cf_net_input, cifar10_cf_net_output,
-                cifar10_preprocessing, cifar10_cf_net,
-                NULL);
+        // model_run_acc_on_idx_base(param[1], param[2],
+        //         cifar10_cf_net_input, cifar10_cf_net_output,
+        //         cifar10_preprocessing, cifar10_cf_net,
+        //         NULL);
         printf("1111111111111111\n");
         k_msleep(10);
     }
 }
 
 void task2(){
+    k_dsp_disable(k_current_get());
     mli_status status = cifar10_cf_init();
     if (status != MLI_STATUS_OK) {
     	printf("Failed to initialize lut for softmax\n");
     }
     while(1){
-        model_run_single_in(kSingleIn, kSingleOutRef,
-                cifar10_cf_net_input, cifar10_cf_net_output,
-                cifar10_preprocessing, cifar10_cf_net,
-                kCifar10RootIR);
+        // model_run_single_in(kSingleIn, kSingleOutRef,
+        //         cifar10_cf_net_input, cifar10_cf_net_output,
+        //         cifar10_preprocessing, cifar10_cf_net,
+        //         kCifar10RootIR);
         printf("2222222222222222\n");
-        k_msleep(1000);
+        k_msleep(10);
     }
 }
 
 K_THREAD_DEFINE(task1_id, STACKSIZE, task1, NULL, NULL, NULL,
 		PRIORITY, K_FP_REGS | K_DSP_REGS, 0);
 K_THREAD_DEFINE(task2_id, STACKSIZE, task2, NULL, NULL, NULL,
-		-1, K_FP_REGS | K_DSP_REGS, 0);
+		PRIORITY, K_FP_REGS | K_DSP_REGS, 0);
 
 //========================================================================================
 // Image pre-processing for CIFAR-10 net
