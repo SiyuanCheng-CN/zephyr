@@ -170,6 +170,56 @@ struct _callee_saved_stack {
 	uintptr_t dsp_ctrl;
 #endif
 
+#ifdef CONFIG_AGU_SHARING
+	uintptr_t agu_ap0;
+	uintptr_t agu_ap1;
+	uintptr_t agu_ap2;
+	uintptr_t agu_ap3;
+	uintptr_t agu_os0;
+	uintptr_t agu_os1;
+	uintptr_t agu_mod0;
+	uintptr_t agu_mod1;
+	uintptr_t agu_mod2;
+	uintptr_t agu_mod3;
+#if (!defined CONFIG_ARC_AGU_MEDIUM) || (!defined CONFIG_ARC_AGU_LARGE)
+	uintptr_t agu_ap4;
+	uintptr_t agu_ap5;
+	uintptr_t agu_ap6;
+	uintptr_t agu_ap7;
+	uintptr_t agu_os2;
+	uintptr_t agu_os3;
+	uintptr_t agu_mod4;
+	uintptr_t agu_mod5;
+	uintptr_t agu_mod6;
+	uintptr_t agu_mod7;
+	uintptr_t agu_mod8;
+	uintptr_t agu_mod9;
+	uintptr_t agu_mod10;
+	uintptr_t agu_mod11;
+#endif
+#ifdef CONFIG_ARC_AGU_LARGE
+	uintptr_t agu_ap8;
+	uintptr_t agu_ap9;
+	uintptr_t agu_ap10;
+	uintptr_t agu_ap11;
+	uintptr_t agu_os4;
+	uintptr_t agu_os5;
+	uintptr_t agu_os6;
+	uintptr_t agu_os7;
+	uintptr_t agu_mod12;
+	uintptr_t agu_mod13;
+	uintptr_t agu_mod14;
+	uintptr_t agu_mod15;
+	uintptr_t agu_mod16;
+	uintptr_t agu_mod17;
+	uintptr_t agu_mod18;
+	uintptr_t agu_mod19;
+	uintptr_t agu_mod20;
+	uintptr_t agu_mod21;
+	uintptr_t agu_mod22;
+	uintptr_t agu_mod23;
+#endif
+#endif
 	/*
 	 * No need to save r31 (blink), it's either already pushed as the pc or
 	 * blink on an irq stack frame.
