@@ -159,7 +159,7 @@ struct _callee_saved_stack {
 #endif
 
 #ifdef CONFIG_DSP_SHARING
-#ifdef CONFIG_ARC_DSP_COMPLEX
+#ifdef CONFIG_ARC_DSP_BFLY_SHARING
 	uintptr_t dsp_fft_ctrl;
 	uintptr_t dsp_bfly0;
 #endif
@@ -181,7 +181,7 @@ struct _callee_saved_stack {
 	uintptr_t agu_mod1;
 	uintptr_t agu_mod2;
 	uintptr_t agu_mod3;
-#if (!defined CONFIG_ARC_AGU_MEDIUM) || (!defined CONFIG_ARC_AGU_LARGE)
+#ifdef CONFIG_ARC_AGU_MEDIUM
 	uintptr_t agu_ap4;
 	uintptr_t agu_ap5;
 	uintptr_t agu_ap6;

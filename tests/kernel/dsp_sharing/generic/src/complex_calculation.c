@@ -8,7 +8,7 @@
  * @file
  * @brief complex number multiplication portion of DSP sharing test
  *
- * @ingroup kernel_dspharing_tests
+ * @ingroup kernel_dspsharing_tests
  *
  * This module is used for the DSP sharing test, and supplements the basic
  * load/store test by incorporating two additional threads that utilize the
@@ -16,7 +16,7 @@
  *
  * Testing utilizes a pair of tasks that independently compute complex vector
  * dot product. The lower priority task is regularly preempted by the higher
- * priority task, therebytesting whether DSP context information is properly
+ * priority task, thereby testing whether DSP context information is properly
  * preserved.
  *
  * A reference value of computed result is computed once at the start of the
@@ -34,7 +34,7 @@
 static DATA_ATTR const cq15_t cq15_a[3] = {{0x20, 10}, {0x10, 20}, {4, 30}};
 static DATA_ATTR const cq15_t cq15_b[3] = {{0x20, 11}, {0x10, 21}, {5, 31}};
 
-static volatile short reference_result = 0;
+static volatile short reference_result;
 
 static volatile unsigned int calc_low_count;
 static volatile unsigned int calc_high_count;

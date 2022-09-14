@@ -122,7 +122,7 @@ GEN_OFFSET_SYM(_callee_saved_stack_t, acc0_lo);
 GEN_OFFSET_SYM(_callee_saved_stack_t, acc0_glo);
 GEN_OFFSET_SYM(_callee_saved_stack_t, acc0_hi);
 GEN_OFFSET_SYM(_callee_saved_stack_t, acc0_ghi);
-#ifdef CONFIG_ARC_DSP_COMPLEX
+#ifdef CONFIG_ARC_DSP_BFLY_SHARING
 GEN_OFFSET_SYM(_callee_saved_stack_t, dsp_bfly0);
 GEN_OFFSET_SYM(_callee_saved_stack_t, dsp_fft_ctrl);
 #endif
@@ -138,7 +138,7 @@ GEN_OFFSET_SYM(_callee_saved_stack_t, agu_mod0);
 GEN_OFFSET_SYM(_callee_saved_stack_t, agu_mod1);
 GEN_OFFSET_SYM(_callee_saved_stack_t, agu_mod2);
 GEN_OFFSET_SYM(_callee_saved_stack_t, agu_mod3);
-#if (!defined CONFIG_ARC_AGU_MEDIUM) || (!defined CONFIG_ARC_AGU_LARGE)
+#ifdef CONFIG_ARC_AGU_MEDIUM
 GEN_OFFSET_SYM(_callee_saved_stack_t, agu_ap4);
 GEN_OFFSET_SYM(_callee_saved_stack_t, agu_ap5);
 GEN_OFFSET_SYM(_callee_saved_stack_t, agu_ap6);

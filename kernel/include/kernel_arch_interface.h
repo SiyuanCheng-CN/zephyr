@@ -227,7 +227,7 @@ int arch_dsp_disable(struct k_thread *thread);
  *
  * The function is used to enable the preservation of dsp
  * context information for a particular thread.
- * This API depends on each architecture implimentation. If the architecture
+ * This API depends on each architecture implementation. If the architecture
  * does not support enabling, this API will always be failed.
  *
  *

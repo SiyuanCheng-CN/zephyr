@@ -32,7 +32,7 @@
 #if defined(CONFIG_ISA_ARCV2)
 
 struct dsp_volatile_register_set {
-#ifdef CONFIG_ARC_DSP_COMPLEX
+#ifdef CONFIG_ARC_DSP_BFLY_SHARING
 	uintptr_t dsp_bfly0;
 #endif
 };

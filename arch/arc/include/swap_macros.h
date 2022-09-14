@@ -100,7 +100,7 @@ dsp_store :
 	st_s r13, [sp, ___callee_saved_stack_t_acc0_hi_OFFSET]
 	lr r13, [_ARC_V2_ACC0_GHI]
 	st_s r13, [sp, ___callee_saved_stack_t_acc0_ghi_OFFSET]
-#ifdef CONFIG_ARC_DSP_COMPLEX
+#ifdef CONFIG_ARC_DSP_BFLY_SHARING
 	lr r13, [_ARC_V2_DSP_BFLY0]
 	st_s r13, [sp, ___callee_saved_stack_t_dsp_bfly0_OFFSET]
 	lr r13, [_ARC_V2_DSP_FFT_CTRL]
@@ -129,7 +129,7 @@ agu_store :
 	st r13, [sp, ___callee_saved_stack_t_agu_mod2_OFFSET]
 	lr r13, [_ARC_V2_AGU_MOD3]
 	st r13, [sp, ___callee_saved_stack_t_agu_mod3_OFFSET]
-#if (!defined CONFIG_ARC_AGU_MEDIUM) || (!defined CONFIG_ARC_AGU_LARGE)
+#ifdef CONFIG_ARC_AGU_MEDIUM
 	lr r13, [_ARC_V2_AGU_AP4]
 	st r13, [sp, ___callee_saved_stack_t_agu_ap4_OFFSET]
 	lr r13, [_ARC_V2_AGU_AP5]
@@ -252,7 +252,7 @@ dsp_load :
 	sr r13, [_ARC_V2_ACC0_HI]
 	ld_s r13, [sp, ___callee_saved_stack_t_acc0_ghi_OFFSET]
 	sr r13, [_ARC_V2_ACC0_GHI]
-#ifdef CONFIG_ARC_DSP_COMPLEX
+#ifdef CONFIG_ARC_DSP_BFLY_SHARING
 	ld_s r13, [sp, ___callee_saved_stack_t_dsp_bfly0_OFFSET]
 	sr r13, [_ARC_V2_DSP_BFLY0]
 	ld_s r13, [sp, ___callee_saved_stack_t_dsp_fft_ctrl_OFFSET]
@@ -281,7 +281,7 @@ agu_load :
 	sr r13, [_ARC_V2_AGU_MOD2]
 	ld r13, [sp, ___callee_saved_stack_t_agu_mod3_OFFSET]
 	sr r13, [_ARC_V2_AGU_MOD3]
-#if (!defined CONFIG_ARC_AGU_MEDIUM) || (!defined CONFIG_ARC_AGU_LARGE)
+#ifdef CONFIG_ARC_AGU_MEDIUM
 	ld r13, [sp, ___callee_saved_stack_t_agu_ap4_OFFSET]
 	sr r13, [_ARC_V2_AGU_AP4]
 	ld r13, [sp, ___callee_saved_stack_t_agu_ap5_OFFSET]
