@@ -20,6 +20,9 @@
 #include <zephyr/arch/arc/v2/mpu/arc_core_mpu.h>
 #endif
 
+#if defined(CONFIG_DSP) && defined(CONFIG_DSP_SHARING)
+static struct k_spinlock lock;
+#endif
 /*  initial stack frame */
 struct init_stack_frame {
 	uintptr_t pc;
@@ -288,3 +291,33 @@ FUNC_NORETURN void z_arc_switch_to_main_no_multithreading(k_thread_entry_t main_
 	CODE_UNREACHABLE; /* LCOV_EXCL_LINE */
 }
 #endif /* !CONFIG_MULTITHREADING */
+
+#if defined(CONFIG_DSP) && defined(CONFIG_DSP_SHARING)
+int arch_dsp_disable(struct k_thread *thread, unsigned int options)
+{
+	/* Ensure a preemptive context switch does not occur */
+
+	k_spinlock_key_t key = k_spin_lock(&lock);
+
+	/* Disable DSP or AGU capabilities for the thread */
+	thread->base.user_options &= ~(uint8_t)options;
+
+	k_spin_unlock(&lock, key);
+
+	return 0;
+}
+
+int arch_dsp_enable(struct k_thread *thread, unsigned int options)
+{
+	/* Ensure a preemptive context switch does not occur */
+
+	k_spinlock_key_t key = k_spin_lock(&lock);
+
+	/* Enable dsp or agu capabilities for the thread */
+	thread->base.user_options |= (uint8_t)options;
+
+	k_spin_unlock(&lock, key);
+
+	return 0;
+}
+#endif /* CONFIG_DSP && CONFIG_DSP_SHARING */
