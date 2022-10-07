@@ -327,8 +327,10 @@ CMSIS-DSP integration:
     - stephanosio
   collaborators:
     - galak
+    - yperess
   files:
     - modules/Kconfig.cmsis_dsp
+    - subsys/math/
     - tests/benchmarks/cmsis_dsp/
     - tests/lib/cmsis_dsp/
   labels:
