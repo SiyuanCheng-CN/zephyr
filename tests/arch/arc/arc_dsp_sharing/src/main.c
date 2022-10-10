@@ -7,16 +7,15 @@
 #include <zephyr/ztest.h>
 #include "test_common.h"
 
-#ifndef CONFIG_DSP
-#error Rebuild with the DSP config option enabled
+#ifndef CONFIG_ARC_DSP
+#error Rebuild with the ARC_DSP config option enabled
 #endif
 
-#ifndef CONFIG_DSP_SHARING
-#error Rebuild with the DSP_SHARING config option enabled
+#ifndef CONFIG_ARC_DSP_SHARING
+#error Rebuild with the ARC_DSP_SHARING config option enabled
 #endif
 
 extern void test_load_store(void);
-/* test_calculation is arch specific */
 extern void test_calculation(void);
 
 void test_main(void)

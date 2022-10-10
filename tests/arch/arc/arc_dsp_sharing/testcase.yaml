@@ -3,6 +3,6 @@ tests:
     toolchain_allow: arcmwdt
     filter: CONFIG_ISA_ARCV2 and CONFIG_CPU_HAS_DSP
     slow: true
-    tags: dsp kernel
+    tags: dsp arc
     timeout: 600
     min_ram: 16

@@ -8,8 +8,6 @@
  * @file
  * @brief load/store portion of DSP sharing test
  *
- * @defgroup kernel_dspsharing_tests DSP Sharing Tests
- *
  * @ingroup all_tests
  *
  * This module implements the load/store portion of the  DSP sharing test. This
@@ -26,11 +24,7 @@
 
 #include <zephyr/ztest.h>
 #include <zephyr/debug/gcov.h>
-
-#if defined(CONFIG_ISA_ARCV2)
 #include "dsp_regs_arc.h"
-#endif
-
 #include "dsp_context.h"
 #include "test_common.h"
 
@@ -116,12 +110,9 @@ static void load_store_low(void)
 
 		for (i = 0; i < SIZEOF_DSP_REGISTER_SET; i++) {
 			if (store_ptr[i] != init_byte) {
-				TC_ERROR("Found 0x%x instead of 0x%x @ "
-					 "offset 0x%x\n",
-					 store_ptr[i],
-					 init_byte, i);
-				TC_ERROR("Discrepancy found during "
-					 "iteration %d\n",
+				TC_ERROR("Found 0x%x instead of 0x%x @offset 0x%x\n",
+					 store_ptr[i], init_byte, i);
+				TC_ERROR("Discrepancy found during iteration %d\n",
 					 load_store_low_count);
 				error = true;
 			}

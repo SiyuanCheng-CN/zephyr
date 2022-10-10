@@ -82,7 +82,6 @@ extern FUNC_NORETURN void z_arc_switch_to_main_no_multithreading(
 
 #endif /* !CONFIG_MULTITHREADING */
 
-
 #ifdef __cplusplus
 }
 #endif

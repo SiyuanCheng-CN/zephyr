@@ -1,6 +1,6 @@
 	-arcv2em
 	-core3
-	-rgf_num_banks=2
+	-rgf_num_banks=1
 	-rgf_banked_regs=32
 	-rgf_num_wr_ports=2
 	-Xcode_density
@@ -43,7 +43,6 @@
 	-interrupts=20
 	-interrupt_priorities=4
 	-ext_interrupts=16
-	-firq
 	-interrupt_base=0x0
 	-dcache=16384,32,2,a
 	-dcache_feature=2

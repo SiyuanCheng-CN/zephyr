@@ -14,8 +14,4 @@
 #define THREAD_HIGH_PRIORITY	5
 #define THREAD_LOW_PRIORITY	10
 
-#if defined(CONFIG_ISA_ARCV2)
 #define THREAD_DSP_FLAGS		(K_DSP_REGS | K_AGU_REGS)
-#else
-#define THREAD_DSP_FLAGS		(K_DSP_REGS)
-#endif

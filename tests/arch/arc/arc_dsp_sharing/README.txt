@@ -2,10 +2,10 @@ Title: Shared DSP Support
 
 Description:
 
-The Shared DSP Support test uses two tasks to:
+This test is only for ARC targets and uses two tasks to:
 
   1) Test load and store dsp registers (including arch specific registers)
-  2) For ARC processor: compute complex vector product and check for any errors
+  2) compute complex vector product and check for any errors
 
 This tests the ability of tasks to safely share dsp hardware
 resources, even when switching occurs preemptively (note that both sets of

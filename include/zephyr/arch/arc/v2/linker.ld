@@ -236,6 +236,7 @@ SECTIONS {
 	_estack = .;
 #endif /* __MWDT_LINKER_CMD__ */
 
+#ifdef CONFIG_ARC_XY_ENABLE
 	SECTION_PROLOGUE(xdata,,)
 	{
 		__xdata_start = .;
@@ -249,6 +250,7 @@ SECTIONS {
 		*(.Ydata*)
 		__ydata_end = .;
 	} GROUP_DATA_LINK_IN(YCCM, RAMABLE_REGION)
+#endif
 
 	GROUP_END(RAMABLE_REGION)
 

@@ -1,6 +1,6 @@
 identifier: nsim_em11d
 name: EM11D Nsim simulator
-type: mcu
+type: sim
 simulation: nsim
 arch: arc
 toolchain:
