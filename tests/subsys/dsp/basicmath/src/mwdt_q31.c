@@ -11,19 +11,19 @@
 #include <stdlib.h>
 #include "../../../../lib/cmsis_dsp/common/test_common.h"
 
-#include "q31.pat"
+#include "mwdt_q31.pat"
 
 #define SNR_ERROR_THRESH	((float32_t)100)
 #define ABS_ERROR_THRESH_Q31	((q31_t)4)
 #define ABS_ERROR_THRESH_Q63	((q63_t)(1 << 17))
 
 static void test_zdsp_add_q31(
-	const q31_t *input1, const q31_t *input2, const q31_t *ref, size_t length)
+	const __xy q31_t *input1, const __xy q31_t *input2, const q31_t *ref, size_t length)
 {
-	q31_t *output;
+	__xy q31_t* output; 
 
 	/* Allocate output buffer */
-	output = malloc(length * sizeof(q31_t));
+	output=(__xy q31_t*)malloc(length * sizeof(q31_t));
 	zassert_not_null(output, ASSERT_MSG_BUFFER_ALLOC_FAILED);
 
 	/* Run test function */
@@ -37,9 +37,6 @@ static void test_zdsp_add_q31(
 	zassert_true(
 		test_near_equal_q31(length, output, ref, ABS_ERROR_THRESH_Q31),
 		ASSERT_MSG_ABS_ERROR_LIMIT_EXCEED);
-
-	/* Free output buffer */
-	free(output);
 }
 
 DEFINE_TEST_VARIANT4(basic_math_q31, zdsp_add_q31, 3, in_com1, in_com2, ref_add, 3);
@@ -51,12 +48,12 @@ DEFINE_TEST_VARIANT4(basic_math_q31, zdsp_add_q31, long, in_com1, in_com2, ref_a
 		     ARRAY_SIZE(in_com1));
 
 static void test_zdsp_sub_q31(
-	const q31_t *input1, const q31_t *input2, const q31_t *ref, size_t length)
+	const __xy q31_t *input1, const __xy q31_t *input2, const q31_t *ref, size_t length)
 {
-	q31_t *output;
+	__xy q31_t* output; 
 
 	/* Allocate output buffer */
-	output = malloc(length * sizeof(q31_t));
+	output=(__xy q31_t*)malloc(length * sizeof(q31_t));
 	zassert_not_null(output, ASSERT_MSG_BUFFER_ALLOC_FAILED);
 
 	/* Run test function */
@@ -70,9 +67,6 @@ static void test_zdsp_sub_q31(
 	zassert_true(
 		test_near_equal_q31(length, output, ref, ABS_ERROR_THRESH_Q31),
 		ASSERT_MSG_ABS_ERROR_LIMIT_EXCEED);
-
-	/* Free output buffer */
-	free(output);
 }
 
 DEFINE_TEST_VARIANT4(basic_math_q31, zdsp_sub_q31, 3, in_com1, in_com2, ref_sub, 3);
@@ -84,12 +78,12 @@ DEFINE_TEST_VARIANT4(basic_math_q31, zdsp_sub_q31, long, in_com1, in_com2, ref_s
 		     ARRAY_SIZE(in_com1));
 
 static void test_zdsp_mult_q31(
-	const q31_t *input1, const q31_t *input2, const q31_t *ref, size_t length)
+	const __xy q31_t *input1, const __xy q31_t *input2, const q31_t *ref, size_t length)
 {
-	q31_t *output;
+	__xy q31_t* output; 
 
 	/* Allocate output buffer */
-	output = malloc(length * sizeof(q31_t));
+	output=(__xy q31_t*)malloc(length * sizeof(q31_t));
 	zassert_not_null(output, ASSERT_MSG_BUFFER_ALLOC_FAILED);
 
 	/* Run test function */
@@ -103,9 +97,6 @@ static void test_zdsp_mult_q31(
 	zassert_true(
 		test_near_equal_q31(length, output, ref, ABS_ERROR_THRESH_Q31),
 		ASSERT_MSG_ABS_ERROR_LIMIT_EXCEED);
-
-	/* Free output buffer */
-	free(output);
 }
 
 DEFINE_TEST_VARIANT4(basic_math_q31, zdsp_mult_q31, 3, in_com1, in_com2, ref_mult, 3);
@@ -117,12 +108,12 @@ DEFINE_TEST_VARIANT4(basic_math_q31, zdsp_mult_q31, long, in_com1, in_com2, ref_
 		     ARRAY_SIZE(in_com1));
 
 static void test_zdsp_negate_q31(
-	const q31_t *input1, const q31_t *ref, size_t length)
+	const __xy q31_t *input1, const q31_t *ref, size_t length)
 {
-	q31_t *output;
+	__xy q31_t* output; 
 
 	/* Allocate output buffer */
-	output = malloc(length * sizeof(q31_t));
+	output=(__xy q31_t*)malloc(length * sizeof(q31_t));
 	zassert_not_null(output, ASSERT_MSG_BUFFER_ALLOC_FAILED);
 
 	/* Run test function */
@@ -136,9 +127,6 @@ static void test_zdsp_negate_q31(
 	zassert_true(
 		test_near_equal_q31(length, output, ref, ABS_ERROR_THRESH_Q31),
 		ASSERT_MSG_ABS_ERROR_LIMIT_EXCEED);
-
-	/* Free output buffer */
-	free(output);
 }
 
 DEFINE_TEST_VARIANT3(basic_math_q31, zdsp_negate_q31, 3, in_com1, ref_negate, 3);
@@ -149,12 +137,12 @@ DEFINE_TEST_VARIANT3(basic_math_q31, zdsp_negate_q31, long, in_com1, ref_negate,
 		     ARRAY_SIZE(in_com1));
 
 static void test_zdsp_offset_q31(
-	const q31_t *input1, q31_t scalar, const q31_t *ref, size_t length)
+	const __xy q31_t *input1, q31_t scalar, const q31_t *ref, size_t length)
 {
-	q31_t *output;
+	__xy q31_t* output; 
 
 	/* Allocate output buffer */
-	output = malloc(length * sizeof(q31_t));
+	output=(__xy q31_t*)malloc(length * sizeof(q31_t));
 	zassert_not_null(output, ASSERT_MSG_BUFFER_ALLOC_FAILED);
 
 	/* Run test function */
@@ -168,9 +156,6 @@ static void test_zdsp_offset_q31(
 	zassert_true(
 		test_near_equal_q31(length, output, ref, ABS_ERROR_THRESH_Q31),
 		ASSERT_MSG_ABS_ERROR_LIMIT_EXCEED);
-
-	/* Free output buffer */
-	free(output);
 }
 
 DEFINE_TEST_VARIANT4(basic_math_q31, zdsp_offset_q31, 0p5_3, in_com1, 0x40000000, ref_offset, 3);
@@ -184,12 +169,12 @@ DEFINE_TEST_VARIANT4(basic_math_q31, zdsp_offset_q31, long, in_com1, 0x40000000,
 		     ARRAY_SIZE(in_com1));
 
 static void test_zdsp_scale_q31(
-	const q31_t *input1, q31_t scalar, const q31_t *ref, size_t length)
+	const __xy q31_t *input1, q31_t scalar, const q31_t *ref, size_t length)
 {
-	q31_t *output;
+	__xy q31_t* output; 
 
 	/* Allocate output buffer */
-	output = malloc(length * sizeof(q31_t));
+	output=(__xy q31_t*)malloc(length * sizeof(q31_t));
 	zassert_not_null(output, ASSERT_MSG_BUFFER_ALLOC_FAILED);
 
 	/* Run test function */
@@ -203,9 +188,6 @@ static void test_zdsp_scale_q31(
 	zassert_true(
 		test_near_equal_q31(length, output, ref, ABS_ERROR_THRESH_Q31),
 		ASSERT_MSG_ABS_ERROR_LIMIT_EXCEED);
-
-	/* Free output buffer */
-	free(output);
 }
 
 DEFINE_TEST_VARIANT4(basic_math_q31, zdsp_scale_q31, 0p5_3, in_com1, 0x40000000, ref_scale, 3);
@@ -217,12 +199,12 @@ DEFINE_TEST_VARIANT4(basic_math_q31, zdsp_scale_q31, long, in_com1, 0x40000000, 
 		     ARRAY_SIZE(in_com1));
 
 static void test_zdsp_dot_prod_q31(
-	const q31_t *input1, const q31_t *input2, const q63_t *ref, size_t length)
+	const __xy q31_t *input1, const __xy q31_t *input2, const q63_t *ref, size_t length)
 {
-	q63_t *output;
+	__xy q63_t *output;
 
 	/* Allocate output buffer */
-	output = malloc(1 * sizeof(q63_t));
+	output = (__xy q63_t*)malloc(length * sizeof(q63_t));
 	zassert_not_null(output, ASSERT_MSG_BUFFER_ALLOC_FAILED);
 
 	/* Run test function */
@@ -248,12 +230,12 @@ DEFINE_TEST_VARIANT4(basic_math_q31, zdsp_dot_prod_q31, long, in_com1, in_com2, 
 		     ARRAY_SIZE(in_com1));
 
 static void test_zdsp_abs_q31(
-	const q31_t *input1, const q31_t *ref, size_t length)
+	const __xy q31_t *input1, const q31_t *ref, size_t length)
 {
-	q31_t *output;
+	__xy q31_t* output; 
 
 	/* Allocate output buffer */
-	output = malloc(length * sizeof(q31_t));
+	output=(__xy q31_t*)malloc(length * sizeof(q31_t));
 	zassert_not_null(output, ASSERT_MSG_BUFFER_ALLOC_FAILED);
 
 	/* Run test function */
@@ -267,9 +249,6 @@ static void test_zdsp_abs_q31(
 	zassert_true(
 		test_near_equal_q31(length, output, ref, ABS_ERROR_THRESH_Q31),
 		ASSERT_MSG_ABS_ERROR_LIMIT_EXCEED);
-
-	/* Free output buffer */
-	free(output);
 }
 
 DEFINE_TEST_VARIANT3(basic_math_q31, zdsp_abs_q31, 3, in_com1, ref_abs, 3);
@@ -278,12 +257,12 @@ DEFINE_TEST_VARIANT3(basic_math_q31, zdsp_abs_q31, 11, in_com1, ref_abs, 11);
 DEFINE_TEST_VARIANT3(basic_math_q31, zdsp_abs_q31, long, in_com1, ref_abs, ARRAY_SIZE(in_com1));
 
 static void test_zdsp_shift_q31(
-	const q31_t *input1, const q31_t *ref, size_t length)
+	const __xy q31_t *input1, const q31_t *ref, size_t length)
 {
-	q31_t *output;
+	__xy q31_t* output; 
 
 	/* Allocate output buffer */
-	output = malloc(length * sizeof(q31_t));
+	output=(__xy q31_t*)malloc(length * sizeof(q31_t));
 	zassert_not_null(output, ASSERT_MSG_BUFFER_ALLOC_FAILED);
 
 	/* Run test function */
@@ -297,9 +276,6 @@ static void test_zdsp_shift_q31(
 	zassert_true(
 		test_near_equal_q31(length, output, ref, ABS_ERROR_THRESH_Q31),
 		ASSERT_MSG_ABS_ERROR_LIMIT_EXCEED);
-
-	/* Free output buffer */
-	free(output);
 }
 
 DEFINE_TEST_VARIANT3(basic_math_q31, zdsp_shift_q31, rand, in_rand, ref_shift, 9);
@@ -407,12 +383,12 @@ DEFINE_TEST_VARIANT4(basic_math_q31, arm_xor_u32, 8, in_bitwise1, in_bitwise2, r
 DEFINE_TEST_VARIANT4(basic_math_q31, arm_xor_u32, 11, in_bitwise1, in_bitwise2, ref_xor, 11);
 
 static void test_zdsp_clip_q31(
-	const q31_t *input, const q31_t *ref, q31_t min, q31_t max, size_t length)
+	const __xy q31_t *input, const q31_t *ref, q31_t min, q31_t max, size_t length)
 {
-	q31_t *output;
+	__xy q31_t *output;
 
 	/* Allocate output buffer */
-	output = malloc(length * sizeof(q31_t));
+	output = (__xy q31_t*)malloc(length * sizeof(q31_t));
 	zassert_not_null(output, ASSERT_MSG_BUFFER_ALLOC_FAILED);
 
 	/* Run test function */

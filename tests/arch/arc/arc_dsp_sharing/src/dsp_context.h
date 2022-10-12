@@ -16,7 +16,7 @@ struct dsp_volatile_register_set {
 #ifdef CONFIG_ARC_DSP_BFLY_SHARING
 	uintptr_t dsp_bfly0;
 #endif
-#ifdef CONFIG_AGU_SHARING
+#ifdef CONFIG_ARC_AGU_SHARING
 	uintptr_t agu_ap0;
 	uintptr_t agu_os0;
 #endif

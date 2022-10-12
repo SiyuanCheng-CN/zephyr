@@ -29,7 +29,7 @@
 #include "dsp_context.h"
 #include "test_common.h"
 
-/* stored in XY memory, need AGU_SHARING */
+/* stored in XY memory, need ARC_AGU_SHARING */
 #define DATA_ATTR __xy __attribute__((section(".Xdata")))
 static DATA_ATTR const cq15_t cq15_a[3] = {{0x20, 10}, {0x10, 20}, {4, 30}};
 static DATA_ATTR const cq15_t cq15_b[3] = {{0x20, 11}, {0x10, 21}, {5, 31}};

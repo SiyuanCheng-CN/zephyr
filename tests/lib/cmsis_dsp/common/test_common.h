@@ -11,12 +11,14 @@
 #include <zephyr/ztest.h>
 #include <zephyr/kernel.h>
 #include <stdlib.h>
+#include <math.h>
+#include "math_helper.h"
+#ifdef CONFIG_DSP_BACKEND_CMSIS
 #include <arm_math.h>
+#endif
 #ifdef CONFIG_CMSIS_DSP_FLOAT16
 #include <arm_math_f16.h>
 #endif
-
-#include "math_helper.h"
 
 #define ASSERT_MSG_BUFFER_ALLOC_FAILED		"buffer allocation failed"
 #define ASSERT_MSG_SNR_LIMIT_EXCEED		"signal-to-noise ratio " \

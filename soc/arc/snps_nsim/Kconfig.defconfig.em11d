@@ -56,9 +56,6 @@ config ARC_HAS_ACCL_REGS
 config ARC_XY_ENABLE
 	default y
 
-config AGU_SHARING
-	default y
-
 config ARC_AGU_LARGE
 	default y
 

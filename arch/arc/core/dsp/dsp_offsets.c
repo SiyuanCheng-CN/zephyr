@@ -20,7 +20,7 @@ GEN_OFFSET_SYM(_callee_saved_stack_t, dsp_bfly0);
 GEN_OFFSET_SYM(_callee_saved_stack_t, dsp_fft_ctrl);
 #endif
 #endif
-#ifdef CONFIG_AGU_SHARING
+#ifdef CONFIG_ARC_AGU_SHARING
 GEN_OFFSET_SYM(_callee_saved_stack_t, agu_ap0);
 GEN_OFFSET_SYM(_callee_saved_stack_t, agu_ap1);
 GEN_OFFSET_SYM(_callee_saved_stack_t, agu_ap2);

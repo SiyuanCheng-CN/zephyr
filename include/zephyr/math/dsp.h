@@ -51,6 +51,6 @@ typedef double float64_t;
 }
 #endif
 
-#include <zephyr/dsp/basicmath.h>
+#include <zephyr/math/dsp/basicmath.h>
 
 #endif /* INCLUDE_ZEPHYR_MATH_DSP_H_ */

@@ -3,6 +3,6 @@
 
 zephyr_library_named(zdsp)
 
-add_subdirectory_ifdef(CONFIG_DSP_BACKEND_CMSIS cmsis_backend)
+add_subdirectory(cmsis_backend)
 
 zephyr_link_libraries(zdsp)

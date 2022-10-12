@@ -5,11 +5,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include <zephyr/dsp.h>
+#include <zephyr/math/dsp.h>
 #include <zephyr/ztest.h>
 #include <zephyr/kernel.h>
 #include <stdlib.h>
-#include "../../common/test_common.h"
+#include "../../../../lib/cmsis_dsp/common/test_common.h"
 
 #include "q7.pat"
 

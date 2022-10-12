@@ -31,13 +31,13 @@
 #endif
 #endif
 dsp_skip_save :
-#ifdef CONFIG_AGU_SHARING
+#ifdef CONFIG_ARC_AGU_SHARING
 	_save_agu_regs
 #endif
 .endm
 
 .macro _save_agu_regs
-#ifdef CONFIG_AGU_SHARING
+#ifdef CONFIG_ARC_AGU_SHARING
 	ld_s r13, [r2, ___thread_base_t_user_options_OFFSET]
 	btst r13, K_AGU_IDX
 
@@ -161,13 +161,13 @@ agu_skip_save :
 #endif
 #endif
 dsp_skip_load :
-#ifdef CONFIG_AGU_SHARING
+#ifdef CONFIG_ARC_AGU_SHARING
 	_load_agu_regs
 #endif
 .endm
 
 .macro _load_agu_regs
-#ifdef CONFIG_AGU_SHARING
+#ifdef CONFIG_ARC_AGU_SHARING
 	ld_s r13, [r2, ___thread_base_t_user_options_OFFSET]
 	btst r13, K_AGU_IDX
 

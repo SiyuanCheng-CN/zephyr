@@ -39,7 +39,7 @@
 #ifndef MATH_HELPER_H
 #define MATH_HELPER_H
 
-#include <arm_math.h>
+// #include <arm_math.h>
 #ifdef CONFIG_CMSIS_DSP_FLOAT16
 #include <arm_math_f16.h>
 #endif

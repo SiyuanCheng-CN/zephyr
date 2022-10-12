@@ -12,7 +12,7 @@ menu "ARC DSP Options"
 depends on ARC_HAS_DSP
 
 config ARC_DSP
-	bool "This option enables digital signal processing (DSP)"
+	bool "digital signal processing (DSP)"
 	help
 	  This option enables DSP and DSP instructions.
 
@@ -41,9 +41,10 @@ config ARC_XY_ENABLE
 	  Processors with XY memory and AGU registers can configure this
 	  option to accelerate DSP instrctions.
 
-config AGU_SHARING
+config ARC_AGU_SHARING
 	bool "ARC address generation unit register sharing"
 	depends on ARC_XY_ENABLE && MULTITHREADING
+	default y if ARC_DSP_SHARING
 	help
 	  This option enables preservation of the hardware AGU registers
 	  across context switches to allow multiple threads to perform concurrent
@@ -53,7 +54,7 @@ config AGU_SHARING
 
 config ARC_AGU_MEDIUM
 	bool "ARC AGU medium size register"
-	depends on AGU_SHARING
+	depends on ARC_AGU_SHARING
 	default n
 	help
 	  Save and restore medium AGU registers, including 8 address pointers regs,
@@ -61,7 +62,7 @@ config ARC_AGU_MEDIUM
 
 config ARC_AGU_LARGE
 	bool "ARC AGU large size register"
-	depends on AGU_SHARING
+	depends on ARC_AGU_SHARING
 	default n
 	select ARC_AGU_MEDIUM
 	help

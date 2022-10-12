@@ -172,7 +172,7 @@ struct _callee_saved_stack {
 	uintptr_t dsp_ctrl;
 #endif
 
-#ifdef CONFIG_AGU_SHARING
+#ifdef CONFIG_ARC_AGU_SHARING
 	uintptr_t agu_ap0;
 	uintptr_t agu_ap1;
 	uintptr_t agu_ap2;

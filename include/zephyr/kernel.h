@@ -231,14 +231,14 @@ extern void k_thread_foreach_unlocked(
 #define K_DSP_REGS (BIT(K_DSP_IDX))
 #endif
 
-#if defined(CONFIG_AGU_SHARING)
+#if defined(CONFIG_ARC_AGU_SHARING)
 /**
  * @brief AGU registers are managed by context switch
  *
  * @details
  * This option indicates that the thread uses the ARC processor's XY
- * memory and DSP feature. Often used with @kconfig{CONFIG_AGU_SHARING}.
- * No effect if @kconfig{CONFIG_AGU_SHARING} is not enabled.
+ * memory and DSP feature. Often used with @kconfig{CONFIG_ARC_AGU_SHARING}.
+ * No effect if @kconfig{CONFIG_ARC_AGU_SHARING} is not enabled.
  */
 #define K_AGU_IDX 7
 #define K_AGU_REGS (BIT(K_AGU_IDX))

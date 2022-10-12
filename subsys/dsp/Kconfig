@@ -7,8 +7,14 @@ config DSP_BACKEND_HAS_STATIC
 config DSP_BACKEND_CMSIS
 	bool "Use the CMSIS-DSP library as the math backend"
 	depends on CMSIS_DSP
-	default y if CMSIS_DSP
 	select DSP_BACKEND_HAS_STATIC
 	help
 	  Implement the various zephyr DSP functions using the CMSIS-DSP library. This feature
 	  requires the CMSIS module to be selected.
+
+config DSP_BACKEND_MWDT_DSPLIB
+	bool "Use the mwdt library as the math backend"
+	depends on CMSIS_DSP
+	select DSP_BACKEND_HAS_STATIC
+	help
+	  Implement the various zephyr DSP functions using the MWDT-DSP library.
