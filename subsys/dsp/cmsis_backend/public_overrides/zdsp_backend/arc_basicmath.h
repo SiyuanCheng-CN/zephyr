@@ -11,9 +11,11 @@ extern "C" {
 
 #include "dsplib.h"
 #include <arm_math.h>
+#define ARC_XY __agu
+#define ARC_RESTRICT __restrict
 
 #define DEF_ZDSP_MAP(op, type)                                                                     \
-	static inline void zdsp_##op(const __agu type * __restrict src_a, const __agu type * __restrict src_b, __agu type * __restrict dst,              \
+	static inline void zdsp_##op(const ARC_XY type * ARC_RESTRICT src_a, const ARC_XY type * ARC_RESTRICT src_b, ARC_XY type * ARC_RESTRICT dst,              \
 				     uint32_t block_size)                                          \
 	{                                                                                          \
 		dsp_##op(src_a, src_b, dst, block_size);                                           \
@@ -36,7 +38,7 @@ DEF_ZDSP_MAP(sub_f32, f32_t)
 
 #undef DEF_ZDSP_MAP
 #define DEF_ZDSP_MAP(op, type)                                                                     \
-	static inline void zdsp_##op(const __agu type * __restrict src, type scale_fract, int8_t shift, __agu type * __restrict dst,   \
+	static inline void zdsp_##op(const ARC_XY type * ARC_RESTRICT src, type scale_fract, int8_t shift, ARC_XY type * ARC_RESTRICT dst,   \
 				     uint32_t block_size)                                          \
 	{                                                                                          \
 		dsp_##op(src, scale_fract, shift, dst, block_size);                                \
@@ -46,7 +48,7 @@ DEF_ZDSP_MAP(scale_q7, q7_t)
 DEF_ZDSP_MAP(scale_q15, q15_t)
 DEF_ZDSP_MAP(scale_q31, q31_t)
 
-static inline void zdsp_scale_f32(const __agu float32_t * __restrict src, float32_t scale, __agu float32_t * __restrict dst,
+static inline void zdsp_scale_f32(const ARC_XY float32_t * ARC_RESTRICT src, float32_t scale, ARC_XY float32_t * ARC_RESTRICT dst,
 				  uint32_t block_size)
 {
 	dsp_scale_f32(src, scale, dst, block_size);
@@ -54,7 +56,7 @@ static inline void zdsp_scale_f32(const __agu float32_t * __restrict src, float3
 
 #undef DEF_ZDSP_MAP
 #define DEF_ZDSP_MAP(op, type)                                                                     \
-	static inline void zdsp_##op(const __agu type * __restrict src, __agu type * __restrict dst, uint32_t block_size)              \
+	static inline void zdsp_##op(const ARC_XY type * ARC_RESTRICT src, ARC_XY type * ARC_RESTRICT dst, uint32_t block_size)              \
 	{                                                                                          \
 		dsp_##op(src, dst, block_size);                                                    \
 	}
@@ -71,8 +73,8 @@ DEF_ZDSP_MAP(negate_f32, f32_t)
 
 #undef DEF_ZDSP_MAP
 #define DEF_ZDSP_MAP(op, type, res_type)                                                           \
-	static inline void zdsp_##op(const __agu type * __restrict src_a, const __agu type * __restrict src_b, uint32_t block_size,    \
-				     res_type * __restrict dst)                                                \
+	static inline void zdsp_##op(const ARC_XY type * ARC_RESTRICT src_a, const ARC_XY type * ARC_RESTRICT src_b, uint32_t block_size,    \
+				     res_type * ARC_RESTRICT dst)                                                \
 	{                                                                                          \
 		dsp_##op(src_a, src_b, block_size, dst);                                           \
 	}
@@ -84,7 +86,7 @@ DEF_ZDSP_MAP(dot_prod_f32, f32_t, f32_t)
 
 #undef DEF_ZDSP_MAP
 #define DEF_ZDSP_MAP(op, type)                                                                     \
-	static inline void zdsp_##op(const __agu type * __restrict src, int8_t shift_bits, __agu type * __restrict dst,                \
+	static inline void zdsp_##op(const ARC_XY type * ARC_RESTRICT src, int8_t shift_bits, ARC_XY type * ARC_RESTRICT dst,                \
 				     uint32_t block_size)                                          \
 	{                                                                                          \
 		dsp_##op(src, shift_bits, dst, block_size);                                        \
@@ -96,7 +98,7 @@ DEF_ZDSP_MAP(shift_q31, q31_t)
 
 #undef DEF_ZDSP_MAP
 #define DEF_ZDSP_MAP(op, type)                                                                     \
-	static inline void zdsp_##op(const __agu type * __restrict src, type offset, __agu type * __restrict dst, uint32_t block_size) \
+	static inline void zdsp_##op(const ARC_XY type * ARC_RESTRICT src, type offset, ARC_XY type * ARC_RESTRICT dst, uint32_t block_size) \
 	{                                                                                          \
 		dsp_##op(src, offset, dst, block_size);                                            \
 	}
@@ -108,7 +110,7 @@ DEF_ZDSP_MAP(offset_f32, f32_t)
 
 #undef DEF_ZDSP_MAP
 #define DEF_ZDSP_MAP(op, type)                                                                     \
-	static inline void zdsp_##op(const __agu type * __restrict src, __agu type * __restrict dst, type low, type high,              \
+	static inline void zdsp_##op(const ARC_XY type * ARC_RESTRICT src, ARC_XY type * ARC_RESTRICT dst, type low, type high,              \
 				     uint32_t num_samples)                                         \
 	{                                                                                          \
 		arm_##op(src, dst, low, high, num_samples);                                        \
@@ -121,8 +123,8 @@ DEF_ZDSP_MAP(clip_f32, float32_t)
 
 #undef DEF_ZDSP_MAP
 #define DEF_ZDSP_MAP(op, type)                                                                     \
-	static inline void zdsp_##op##_u##type(const __agu uint##type##_t * __restrict src_a,                        \
-					       const __agu uint##type##_t * __restrict src_b, __agu uint##type##_t * __restrict dst,   \
+	static inline void zdsp_##op##_u##type(const ARC_XY uint##type##_t * ARC_RESTRICT src_a,                        \
+					       const ARC_XY uint##type##_t * ARC_RESTRICT src_b, ARC_XY uint##type##_t * ARC_RESTRICT dst,   \
 					       uint32_t block_size)                                \
 	{                                                                                          \
 		arm_##op##_u##type(src_a, src_b, dst, block_size);                                 \
@@ -142,7 +144,7 @@ DEF_ZDSP_MAP(xor, 32)
 
 #undef DEF_ZDSP_MAP
 #define DEF_ZDSP_MAP(op, type)                                                                     \
-	static inline void zdsp_##op##_u##type(const __agu uint##type##_t * __restrict src, __agu uint##type##_t * __restrict dst,     \
+	static inline void zdsp_##op##_u##type(const ARC_XY uint##type##_t * ARC_RESTRICT src, ARC_XY uint##type##_t * ARC_RESTRICT dst,     \
 					       uint32_t block_size)                                \
 	{                                                                                          \
 		arm_##op##_u##type(src, dst, block_size);                                          \

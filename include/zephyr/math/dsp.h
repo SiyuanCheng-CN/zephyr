@@ -17,6 +17,8 @@ extern "C" {
 #define DSP_FUNC_SCOPE
 #endif
 
+#define ARC_AGU __agu
+#define ARC_RESTRICT __restrict
 /**
  * @brief 8-bit fractional data type in 1.7 format.
  */
