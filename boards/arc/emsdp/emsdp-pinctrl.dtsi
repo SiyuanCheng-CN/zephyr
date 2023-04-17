@@ -1,0 +1,124 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+
+#include <zephyr/dt-bindings/pinctrl/emsdp-pinctrl.h>
+
+&pinctrl {
+	/* PMOD_A */
+	pmodA_gpio: pmodA_gpio {
+		pinmux = <PMOD_A PMOD_GPIO>;
+	};
+	pmodA_uart: pmodA_uart {
+		pinmux = <PMOD_A PMOD_UART>;
+	};
+	pmodA_spi1_cs0: pmodA_spi1_cs0 {
+		pinmux = <PMOD_A PMOD_SPI>;
+	};
+	pmodA_i2c2: pmodA_i2c2 {
+		pinmux = <PMOD_A PMOD_I2C>;
+	};
+	pmodA_pwm1: pmodA_pwm1 {
+		pinmux = <PMOD_A PMOD_PWM_MODE1>;
+	};
+	pmodA_pwm2: pmodA_pwm2 {
+		pinmux = <PMOD_A PMOD_PWM_MODE2>;
+	};
+
+	/* PMOD_B */
+	pmodB_gpio: pmodB_gpio {
+		pinmux = <PMOD_B PMOD_GPIO>;
+	};
+	pmodB_uart: pmodB_uart {
+		pinmux = <PMOD_B PMOD_UART>;
+	};
+	pmodB_spi1_cs1: pmodB_spi1_cs1 {
+		pinmux = <PMOD_B PMOD_SPI>;
+	};
+	pmodB_i2c2: pmodB_i2c2 {
+		pinmux = <PMOD_B PMOD_I2C>;
+	};
+	pmodB_pwm1: pmodB_pwm1 {
+		pinmux = <PMOD_B PMOD_PWM_MODE1>;
+	};
+	pmodB_pwm2: pmodB_pwm2 {
+		pinmux = <PMOD_B PMOD_PWM_MODE2>;
+	};
+
+	/* PMOD_C */
+	pmodC_gpio: pmodC_gpio {
+		pinmux = <PMOD_C PMOD_GPIO>;
+	};
+	pmodC_uart: pmodC_uart {
+		pinmux = <PMOD_C PMOD_UART>;
+	};
+	pmodC_spi1_cs2: pmodC_spi1_cs2 {
+		pinmux = <PMOD_C PMOD_SPI>;
+	};
+	pmodC_i2c2: pmodC_i2c2 {
+		pinmux = <PMOD_C PMOD_I2C>;
+	};
+	pmodC_pwm1: pmodC_pwm1 {
+		pinmux = <PMOD_C PMOD_PWM_MODE1>;
+	};
+	pmodC_pwm2: pmodC_pwm2 {
+		pinmux = <PMOD_C PMOD_PWM_MODE2>;
+	};
+
+	/* ARDUINO_PIN_1 */
+	arduino1_gpio: arduino1_gpio {
+		pinmux = <ARDUINO_PIN_1 ARDUINO_GPIO>;
+	};
+	arduino1_uart: arduino1_uart {
+		pinmux = <ARDUINO_PIN_1 ARDUINO_UART>;
+	};
+
+	/* ARDUINO_PIN_3 */
+	arduino3_gpio: arduino3_gpio {
+		pinmux = <ARDUINO_PIN_3 ARDUINO_GPIO>;
+	};
+	arduino3_pwm: arduino3_pwm{
+		pinmux = <ARDUINO_PIN_3 ARDUINO_PWM>;
+	};
+
+	/* ARDUINO_PIN_5 */
+	arduino5_gpio: arduino5_gpio {
+		pinmux = <ARDUINO_PIN_5 ARDUINO_GPIO>;
+	};
+	arduino5_pwm: arduino5_pwm {
+		pinmux = <ARDUINO_PIN_5 ARDUINO_PWM>;
+	};
+
+	/* ARDUINO_PIN_7 */
+	arduino7_gpio: arduino7_gpio {
+		pinmux = <ARDUINO_PIN_7 ARDUINO_GPIO>;
+	};
+	arduino7_pwm: arduino7_pwm {
+		pinmux = <ARDUINO_PIN_7 ARDUINO_PWM>;
+	};
+
+	/* ARDUINO_PIN_9 */
+	arduino9_gpio: arduino9_gpio {
+		pinmux = <ARDUINO_PIN_9 ARDUINO_GPIO>;
+	};
+	arduino9_pwm: arduino9_pwm {
+		pinmux = <ARDUINO_PIN_9 ARDUINO_PWM>;
+	};
+
+	/* ARDUINO_PIN_13 */
+	arduino13_gpio: arduino13_gpio {
+		pinmux = <ARDUINO_PIN_13 ARDUINO_GPIO>;
+	};
+	arduino13_spi: arduino13_spi {
+		pinmux = <ARDUINO_PIN_13 ARDUINO_SPI>;
+	};
+	arduino13_pwm: arduino13_pwm {
+		pinmux = <ARDUINO_PIN_13 ARDUINO_PWM>;
+	};
+
+	/* ARDUINO_PIN_AD5 */
+	arduinoAD5_gpio: arduinoAD5_gpio {
+		pinmux = <ARDUINO_PIN_AD5 ARDUINO_GPIO>;
+	};
+	arduinoAD5_i2c: arduinoAD5_i2c {
+		pinmux = <ARDUINO_PIN_AD5 ARDUINO_I2C>;
+	};
+};
