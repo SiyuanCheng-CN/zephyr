@@ -116,6 +116,7 @@
 				status = "okay";
 				jedec-id = [01 02 19];
 			};
+			status = "disabled";
 		};
 
 	};

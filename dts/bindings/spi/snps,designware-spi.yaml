@@ -5,7 +5,7 @@ description: Synopsys DesignWare SPI node
 
 compatible: "snps,designware-spi"
 
-include: spi-controller.yaml
+include: [spi-controller.yaml, pinctrl-device.yaml]
 
 properties:
   reg:
@@ -13,3 +13,9 @@ properties:
 
   interrupts:
     required: true
+
+  aux_reg:
+    description: |
+      This value is used for auxiliary register access. For
+      other platform, this value should be default 0.
+    type: boolean

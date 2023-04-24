@@ -63,7 +63,7 @@ DEFINE_MM_REG_WRITE(ser, DW_SPI_REG_SER, 8)
 
 /* ICR is on a unique bit */
 DEFINE_TEST_BIT_OP(icr, DW_SPI_REG_ICR, DW_SPI_SR_ICR_BIT)
-#define clear_interrupts(addr) test_bit_icr(addr)
+#define clear_interrupts(info) test_bit_icr(info)
 
 #ifdef __cplusplus
 }
